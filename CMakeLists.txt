@@ -5,15 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-# Force hidden visibility by default (only explicit XINFER_API symbols are exported)
-set(CMAKE_CXX_VISIBILITY_PRESET hidden)
-set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
-
-# RPATH configuration so tests and examples can find libxinfer.so at runtime
-set(CMAKE_SKIP_BUILD_RPATH FALSE)
-set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
-set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
-set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+include(FetchContent)
 
 # Feature Flags
 option(XINFER_ENABLE_TENSORRT "Enable NVIDIA TensorRT Backend" ON)
@@ -22,13 +14,11 @@ option(XINFER_ENABLE_RKNN     "Enable Rockchip RKNN Backend"     OFF)
 option(XINFER_BUILD_EXAMPLES  "Build example applications"        ON)
 option(XINFER_BUILD_TESTS     "Build unit tests and benchmarks"  ON)
 
-# Include Directories
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
-# Core Sources
 set(CORE_SOURCES
     src/core/memory.cpp
     src/core/tensor.cpp
@@ -39,66 +29,82 @@ set(CORE_SOURCES
 
 set(BACKEND_SOURCES "")
 
-# TensorRT Configuration
+# -------------------------------------------------------------------
+# 1. TensorRT Setup (NVIDIA)
+# -------------------------------------------------------------------
 if(XINFER_ENABLE_TENSORRT)
     enable_language(CUDA)
     add_compile_definitions(XINFER_ENABLE_TENSORRT)
     find_package(CUDA REQUIRED)
     find_library(TENSORRT_NVINFER nvinfer REQUIRED)
     
-    list(APPEND BACKEND_SOURCES
-        src/backends/tensorrt/tensorrt_backend.cpp
-    )
+    list(APPEND BACKEND_SOURCES src/backends/tensorrt/tensorrt_backend.cpp)
     include_directories(${CUDA_INCLUDE_DIRS})
 endif()
 
-# OpenVINO Configuration
+# -------------------------------------------------------------------
+# 2. OpenVINO Setup (Intel)
+# -------------------------------------------------------------------
 if(XINFER_ENABLE_OPENVINO)
     add_compile_definitions(XINFER_ENABLE_OPENVINO)
-    find_package(OpenVINO REQUIRED)
-    list(APPEND BACKEND_SOURCES
-        src/backends/openvino/openvino_backend.cpp
-    )
+    find_package(OpenVINO QUIET)
+
+    if(OpenVINO_FOUND)
+        message(STATUS "[xInfer] Found System OpenVINO: ${OpenVINO_VERSION}")
+    else()
+        message(WARNING "[xInfer] System OpenVINO not found. Run ./install.sh or install openvino-2024 package.")
+    endif()
+
+    list(APPEND BACKEND_SOURCES src/backends/openvino/openvino_backend.cpp)
 endif()
 
-# RKNN Configuration
+# -------------------------------------------------------------------
+# 3. RKNN Setup (Rockchip) - With Auto-Fetch Fallback for Headers
+# -------------------------------------------------------------------
 if(XINFER_ENABLE_RKNN)
     add_compile_definitions(XINFER_ENABLE_RKNN)
-    find_library(RKNN_RT rknnrt REQUIRED)
-    list(APPEND BACKEND_SOURCES
-        src/backends/rknn/rknn_backend.cpp
-    )
+    
+    find_library(RKNN_RT rknnrt PATHS /usr/local/lib /usr/lib)
+
+    # If headers are missing locally, CMake automatically fetches RKNN C-API from GitHub!
+    find_path(RKNN_HEADER_DIR rknn_api.h PATHS /usr/local/include/rknn /usr/include)
+
+    if(NOT RKNN_HEADER_DIR)
+        message(STATUS "[xInfer] Local RKNN headers not found. Auto-fetching C-API headers from GitHub...")
+        FetchContent_Declare(
+            rknpu2_api
+            GIT_REPOSITORY https://github.com/rockchip-linux/rknpu2.git
+            GIT_TAG        master
+            GIT_SHALLOW    TRUE
+        )
+        FetchContent_MakeAvailable(rknpu2_api)
+        include_directories(${rknpu2_api_SOURCE_DIR}/runtime/RK3588/Linux/librknn_api/include)
+    else()
+        include_directories(${RKNN_HEADER_DIR})
+    endif()
+
+    list(APPEND BACKEND_SOURCES src/backends/rknn/rknn_backend.cpp)
 endif()
 
-# ----------------------------------------------------
-# BUILD SHARED LIBRARY (libxinfer.so / xinfer.dll)
-# ----------------------------------------------------
+# -------------------------------------------------------------------
+# Build Shared Library
+# -------------------------------------------------------------------
 add_library(xinfer SHARED ${CORE_SOURCES} ${BACKEND_SOURCES})
 add_library(xinfer::xinfer ALIAS xinfer)
-
-# Define XINFER_EXPORTS when building the shared library
 target_compile_definitions(xinfer PRIVATE XINFER_EXPORTS)
 
-set_target_properties(xinfer PROPERTIES
-    VERSION ${PROJECT_VERSION}
-    SOVERSION 1
-    OUTPUT_NAME "xinfer"
-)
-
-# Link Dependencies
 if(XINFER_ENABLE_TENSORRT)
     target_link_libraries(xinfer PRIVATE ${CUDA_LIBRARIES} ${TENSORRT_NVINFER})
 endif()
 
-if(XINFER_ENABLE_OPENVINO)
+if(XINFER_ENABLE_OPENVINO AND OpenVINO_FOUND)
     target_link_libraries(xinfer PRIVATE openvino::runtime)
 endif()
 
-if(XINFER_ENABLE_RKNN)
+if(XINFER_ENABLE_RKNN AND RKNN_RT)
     target_link_libraries(xinfer PRIVATE ${RKNN_RT})
 endif()
 
-# Include Subdirectories
 if(XINFER_BUILD_TESTS)
     enable_testing()
     add_subdirectory(tests)
