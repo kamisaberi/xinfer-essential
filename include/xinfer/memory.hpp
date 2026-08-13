@@ -3,7 +3,7 @@
 
 namespace xinfer {
 
-class Memory {
+class XINFER_API  Memory {
 public:
     static void* allocate_pinned(size_t bytes);
     static void free_pinned(void* ptr);

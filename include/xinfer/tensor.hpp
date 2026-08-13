@@ -7,7 +7,7 @@
 
 namespace xinfer {
 
-class Tensor {
+class XINFER_API  Tensor {
 public:
     Tensor(std::string name, std::vector<int64_t> shape, DataType type, void* data_ptr = nullptr);
     ~Tensor() = default;
