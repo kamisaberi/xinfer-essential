@@ -6,7 +6,7 @@
 
 namespace xinfer {
 
-class Engine {
+class XINFER_API  Engine {
 public:
     explicit Engine(Target target);
     ~Engine() = default;
