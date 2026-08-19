@@ -8,8 +8,8 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 include(FetchContent)
 
 # Feature Flags
-option(XINFER_ENABLE_TENSORRT "Enable NVIDIA TensorRT Backend" ON)
-option(XINFER_ENABLE_OPENVINO "Enable Intel OpenVINO Backend" OFF)
+option(XINFER_ENABLE_TENSORRT "Enable NVIDIA TensorRT Backend" OFF)
+option(XINFER_ENABLE_OPENVINO "Enable Intel OpenVINO Backend" ON)
 option(XINFER_ENABLE_RKNN     "Enable Rockchip RKNN Backend"     OFF)
 option(XINFER_BUILD_EXAMPLES  "Build example applications"        ON)
 option(XINFER_BUILD_TESTS     "Build unit tests and benchmarks"  ON)
