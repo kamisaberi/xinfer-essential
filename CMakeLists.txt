@@ -33,7 +33,7 @@ set(BACKEND_SOURCES "")
 # 1. TensorRT Setup (NVIDIA)
 # -------------------------------------------------------------------
 if(XINFER_ENABLE_TENSORRT)
-    message(WARNING "CUDA ACTIVATING")
+    message(WARNING "CUDA ACTIVATING ${XINFER_ENABLE_TENSORRT}")
     enable_language(CUDA)
     add_compile_definitions(XINFER_ENABLE_TENSORRT)
     find_package(CUDA REQUIRED)
