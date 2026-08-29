@@ -1,5 +1,7 @@
 #include "xinfer/engine.hpp"
 #include <stdexcept>
+#include <cstring>    // <--- ADD THIS LINE (Fixes std::memcpy)
+
 
 #ifdef XINFER_ENABLE_TENSORRT
 #include "backends/tensorrt/tensorrt_backend.hpp"
