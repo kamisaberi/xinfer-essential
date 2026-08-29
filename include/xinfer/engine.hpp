@@ -3,6 +3,8 @@
 #include <memory>
 #include "target.hpp"
 #include "backend.hpp"
+#include "export.hpp"  // <--- ADD THIS LINE (Defines XINFER_API)
+
 
 namespace xinfer {
 
