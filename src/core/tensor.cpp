@@ -2,6 +2,7 @@
 #include "xinfer/memory.hpp"
 #include <numeric>
 #include <sstream>
+#include <cstring>    // <--- ADD THIS LINE (Fixes std::memcpy)
 
 namespace xinfer {
 
