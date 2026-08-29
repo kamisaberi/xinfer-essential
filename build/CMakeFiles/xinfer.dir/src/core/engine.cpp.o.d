@@ -212,4 +212,6 @@ CMakeFiles/xinfer.dir/src/core/engine.cpp.o: \
  /home/kami/xinfer-essential/include/xinfer/tensor.hpp \
  /usr/include/c++/15/vector /usr/include/c++/15/bits/stl_vector.h \
  /usr/include/c++/15/bits/stl_bvector.h \
- /usr/include/c++/15/bits/vector.tcc
+ /usr/include/c++/15/bits/vector.tcc \
+ /home/kami/xinfer-essential/include/xinfer/export.hpp \
+ /usr/include/c++/15/cstring /usr/include/string.h /usr/include/strings.h

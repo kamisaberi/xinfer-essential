@@ -212,11 +212,12 @@ CMakeFiles/xinfer.dir/src/core/tensor.cpp.o: \
  /usr/include/c++/15/pstl/glue_memory_defs.h \
  /usr/include/c++/15/pstl/execution_defs.h \
  /home/kami/xinfer-essential/include/xinfer/target.hpp \
- /home/kami/xinfer-essential/include/xinfer/memory.hpp \
  /home/kami/xinfer-essential/include/xinfer/export.hpp \
+ /home/kami/xinfer-essential/include/xinfer/memory.hpp \
  /usr/include/c++/15/numeric /usr/include/c++/15/bits/stl_numeric.h \
  /usr/include/c++/15/limits /usr/include/c++/15/pstl/glue_numeric_defs.h \
  /usr/include/c++/15/sstream /usr/include/c++/15/istream \
  /usr/include/c++/15/ostream /usr/include/c++/15/bits/ostream.tcc \
  /usr/include/c++/15/bits/istream.tcc \
- /usr/include/c++/15/bits/sstream.tcc
+ /usr/include/c++/15/bits/sstream.tcc /usr/include/c++/15/cstring \
+ /usr/include/string.h /usr/include/strings.h

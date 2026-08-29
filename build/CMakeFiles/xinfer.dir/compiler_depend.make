@@ -327,6 +327,7 @@ CMakeFiles/xinfer.dir/src/core/memory.cpp.o: /home/kami/xinfer-essential/src/cor
   /usr/include/c++/15/cstddef \
   /usr/include/c++/15/cstdio \
   /usr/include/c++/15/cstdlib \
+  /usr/include/c++/15/cstring \
   /usr/include/c++/15/cwchar \
   /usr/include/c++/15/debug/assertions.h \
   /usr/include/c++/15/debug/debug.h \
@@ -356,6 +357,8 @@ CMakeFiles/xinfer.dir/src/core/memory.cpp.o: /home/kami/xinfer-essential/src/cor
   /usr/include/stdc-predef.h \
   /usr/include/stdio.h \
   /usr/include/stdlib.h \
+  /usr/include/string.h \
+  /usr/include/strings.h \
   /usr/include/wchar.h \
   /usr/include/x86_64-linux-gnu/asm/errno.h \
   /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
@@ -420,6 +423,7 @@ CMakeFiles/xinfer.dir/src/core/memory.cpp.o: /home/kami/xinfer-essential/src/cor
   /usr/lib/gcc/x86_64-linux-gnu/15/include/stddef.h
 
 CMakeFiles/xinfer.dir/src/core/tensor.cpp.o: /home/kami/xinfer-essential/src/core/tensor.cpp \
+  /home/kami/xinfer-essential/include/xinfer/export.hpp \
   /home/kami/xinfer-essential/include/xinfer/memory.hpp \
   /home/kami/xinfer-essential/include/xinfer/target.hpp \
   /home/kami/xinfer-essential/include/xinfer/tensor.hpp \
@@ -839,6 +843,8 @@ CMakeFiles/xinfer.dir/src/utils/preproc.cpp.o: /home/kami/xinfer-essential/src/u
 
 /home/kami/xinfer-essential/src/core/tensor.cpp:
 
+/usr/include/string.h:
+
 /home/kami/xinfer-essential/include/xinfer/memory.hpp:
 
 /home/kami/xinfer-essential/src/core/memory.cpp:
@@ -1091,6 +1097,8 @@ CMakeFiles/xinfer.dir/src/utils/preproc.cpp.o: /home/kami/xinfer-essential/src/u
 
 /usr/include/c++/15/ostream:
 
+/usr/include/strings.h:
+
 /usr/include/c++/15/bits/exception.h:
 
 /usr/include/asm-generic/int-ll64.h:
@@ -1272,6 +1280,8 @@ CMakeFiles/xinfer.dir/src/utils/preproc.cpp.o: /home/kami/xinfer-essential/src/u
 /usr/include/x86_64-linux-gnu/c++/15/bits/ctype_inline.h:
 
 /usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+
+/usr/include/c++/15/cstring:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 

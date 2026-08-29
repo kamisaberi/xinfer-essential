@@ -329,6 +329,7 @@ CMakeFiles/xinfer.dir/src/core/memory.cpp.o
  /usr/include/c++/15/cstddef
  /usr/include/c++/15/cstdio
  /usr/include/c++/15/cstdlib
+ /usr/include/c++/15/cstring
  /usr/include/c++/15/cwchar
  /usr/include/c++/15/debug/assertions.h
  /usr/include/c++/15/debug/debug.h
@@ -358,6 +359,8 @@ CMakeFiles/xinfer.dir/src/core/memory.cpp.o
  /usr/include/stdc-predef.h
  /usr/include/stdio.h
  /usr/include/stdlib.h
+ /usr/include/string.h
+ /usr/include/strings.h
  /usr/include/wchar.h
  /usr/include/x86_64-linux-gnu/asm/errno.h
  /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h
@@ -423,6 +426,7 @@ CMakeFiles/xinfer.dir/src/core/memory.cpp.o
 
 CMakeFiles/xinfer.dir/src/core/tensor.cpp.o
  /home/kami/xinfer-essential/src/core/tensor.cpp
+ /home/kami/xinfer-essential/include/xinfer/export.hpp
  /home/kami/xinfer-essential/include/xinfer/memory.hpp
  /home/kami/xinfer-essential/include/xinfer/target.hpp
  /home/kami/xinfer-essential/include/xinfer/tensor.hpp
