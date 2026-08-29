@@ -4,6 +4,8 @@
 #include <cstddef>
 #include <memory>
 #include "target.hpp"
+#include "export.hpp"  // <--- ADD THIS LINE (Defines XINFER_API)
+
 
 namespace xinfer {
 
