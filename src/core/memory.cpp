@@ -1,6 +1,9 @@
 #include "xinfer/memory.hpp"
 #include <cstdlib>
 #include <stdexcept>
+#include <cstring>    // <--- ADD THIS LINE (Fixes std::memcpy)
+
+
 
 #ifdef XINFER_ENABLE_TENSORRT
 #include <cuda_runtime.h>

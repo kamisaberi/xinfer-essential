@@ -15,8 +15,9 @@ CMakeFiles/xinfer.dir/src/core/memory.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/15/bits/cpu_defines.h \
  /usr/include/c++/15/pstl/pstl_config.h \
  /usr/lib/gcc/x86_64-linux-gnu/15/include/stddef.h \
- /usr/include/c++/15/bits/version.h /usr/include/c++/15/cstdlib \
- /usr/include/stdlib.h \
+ /usr/include/c++/15/bits/version.h \
+ /home/kami/xinfer-essential/include/xinfer/export.hpp \
+ /usr/include/c++/15/cstdlib /usr/include/stdlib.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
@@ -127,4 +128,5 @@ CMakeFiles/xinfer.dir/src/core/memory.cpp.o: \
  /usr/include/c++/15/bits/memory_resource.h \
  /usr/include/c++/15/bits/uses_allocator.h \
  /usr/include/c++/15/bits/uses_allocator_args.h /usr/include/c++/15/tuple \
- /usr/include/c++/15/bits/ranges_util.h
+ /usr/include/c++/15/bits/ranges_util.h /usr/include/c++/15/cstring \
+ /usr/include/string.h /usr/include/strings.h

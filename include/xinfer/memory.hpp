@@ -1,5 +1,6 @@
 #pragma once
 #include <cstddef>
+#include "export.hpp"  // <--- ADD THIS LINE (Defines XINFER_API)
 
 namespace xinfer {
 

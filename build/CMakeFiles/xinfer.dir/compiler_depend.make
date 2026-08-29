@@ -263,6 +263,7 @@ CMakeFiles/xinfer.dir/src/core/engine.cpp.o: /home/kami/xinfer-essential/src/cor
   /usr/lib/gcc/x86_64-linux-gnu/15/include/syslimits.h
 
 CMakeFiles/xinfer.dir/src/core/memory.cpp.o: /home/kami/xinfer-essential/src/core/memory.cpp \
+  /home/kami/xinfer-essential/include/xinfer/export.hpp \
   /home/kami/xinfer-essential/include/xinfer/memory.hpp \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
@@ -1185,6 +1186,8 @@ CMakeFiles/xinfer.dir/src/utils/preproc.cpp.o: /home/kami/xinfer-essential/src/u
 /usr/include/c++/15/system_error:
 
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/home/kami/xinfer-essential/include/xinfer/export.hpp:
 
 /usr/include/stdint.h:
 
