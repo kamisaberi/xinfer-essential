@@ -8,6 +8,14 @@
 #include "backends/tensorrt/tensorrt_backend.hpp"
 #endif
 
+#ifdef XINFER_ENABLE_OPENVINO
+#include "backends/openvino/openvino_backend.hpp"
+#endif
+
+#ifdef XINFER_ENABLE_RKNN
+#include "backends/rknn/rknn_backend.hpp"
+#endif
+
 namespace xinfer {
 
 Engine::Engine(Target target) : target_(target) {
@@ -20,7 +28,11 @@ Engine::Engine(Target target) : target_(target) {
 #endif
             break;
         case Target::OpenVINO:
-            throw std::runtime_error("OpenVINO backend selection pending compilation!");
+#ifdef XINFER_ENABLE_OPENVINO
+            backend_ = std::make_unique<OpenVINOBackend>();
+#else
+            throw std::runtime_error("OpenVINO backend disabled in this build.");
+#endif
         case Target::RKNN:
             throw std::runtime_error("RKNN backend selection pending compilation!");
         default:
