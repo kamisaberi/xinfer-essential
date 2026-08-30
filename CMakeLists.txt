@@ -119,3 +119,11 @@ if(XINFER_BUILD_EXAMPLES)
     add_executable(xinfer_demo examples/01_tensorrt_yolo.cpp)
     target_link_libraries(xinfer_demo PRIVATE xinfer::xinfer)
 endif()
+
+
+
+# ----------------------------------------------------
+# INSTALLATION RULES
+# ----------------------------------------------------
+install(TARGETS xinfer DESTINATION /usr/local/lib)
+install(DIRECTORY include/xinfer DESTINATION /usr/local/include)

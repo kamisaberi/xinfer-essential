@@ -3,6 +3,10 @@
 /home/kami/xinfer-essential/build/CMakeFiles/test.dir
 /home/kami/xinfer-essential/build/CMakeFiles/edit_cache.dir
 /home/kami/xinfer-essential/build/CMakeFiles/rebuild_cache.dir
+/home/kami/xinfer-essential/build/CMakeFiles/list_install_components.dir
+/home/kami/xinfer-essential/build/CMakeFiles/install.dir
+/home/kami/xinfer-essential/build/CMakeFiles/install/local.dir
+/home/kami/xinfer-essential/build/CMakeFiles/install/strip.dir
 /home/kami/xinfer-essential/build/tests/CMakeFiles/Experimental.dir
 /home/kami/xinfer-essential/build/tests/CMakeFiles/Nightly.dir
 /home/kami/xinfer-essential/build/tests/CMakeFiles/Continuous.dir
@@ -38,3 +42,7 @@
 /home/kami/xinfer-essential/build/tests/CMakeFiles/test.dir
 /home/kami/xinfer-essential/build/tests/CMakeFiles/edit_cache.dir
 /home/kami/xinfer-essential/build/tests/CMakeFiles/rebuild_cache.dir
+/home/kami/xinfer-essential/build/tests/CMakeFiles/list_install_components.dir
+/home/kami/xinfer-essential/build/tests/CMakeFiles/install.dir
+/home/kami/xinfer-essential/build/tests/CMakeFiles/install/local.dir
+/home/kami/xinfer-essential/build/tests/CMakeFiles/install/strip.dir
