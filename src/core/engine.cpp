@@ -33,12 +33,14 @@ Engine::Engine(Target target) : target_(target) {
 #else
             throw std::runtime_error("OpenVINO backend disabled in this build.");
 #endif
+            break;
         case Target::RKNN:
 #ifdef XINFER_ENABLE_RKNN
             backend_ = std::make_unique<RKNNBackend>();
 #else
             throw std::runtime_error("RKNN backend disabled in this build.");
 #endif
+            break;
         default:
             throw std::runtime_error("Unsupported target selected!");
     }
