@@ -138,6 +138,13 @@ add_library(xinfer SHARED ${CORE_SOURCES} ${BACKEND_SOURCES})
 add_library(xinfer::xinfer ALIAS xinfer)
 target_compile_definitions(xinfer PRIVATE XINFER_EXPORTS)
 
+set_target_properties(xinfer PROPERTIES
+    VERSION ${PROJECT_VERSION}
+    SOVERSION 1
+    OUTPUT_NAME "xinfer"
+)
+
+
 if(XINFER_ENABLE_TENSORRT)
     target_link_libraries(xinfer PRIVATE ${CUDA_LIBRARIES} ${TENSORRT_NVINFER})
 endif()
