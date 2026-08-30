@@ -14,7 +14,7 @@ include(FetchContent)
 # -------------------------------------------------------------------
 # ALL 15 HARDWARE BACKEND TOGGLES (Default 3 Core Targets ON)
 # -------------------------------------------------------------------
-option(XINFER_ENABLE_TENSORRT  "Enable NVIDIA TensorRT Backend"      ON)
+option(XINFER_ENABLE_TENSORRT  "Enable NVIDIA TensorRT Backend"      OFF)
 option(XINFER_ENABLE_OPENVINO  "Enable Intel OpenVINO Backend"      ON)
 option(XINFER_ENABLE_RKNN      "Enable Rockchip RKNN Backend"          OFF)
 option(XINFER_ENABLE_VITIS_AI  "Enable AMD/Xilinx Vitis AI Backend"    OFF)
