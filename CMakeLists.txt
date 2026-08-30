@@ -128,3 +128,8 @@ endif()
 # ----------------------------------------------------
 install(TARGETS xinfer DESTINATION /usr/local/lib)
 install(DIRECTORY include/xinfer DESTINATION /usr/local/include)
+
+
+
+add_executable(demo_face_onnx examples/05_huggingface_face_detection.cpp)
+target_link_libraries(demo_face_onnx PRIVATE xinfer::xinfer)
