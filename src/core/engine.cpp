@@ -28,8 +28,15 @@ Engine::Engine(Target target) : target_(target) {
 }
 
 void Engine::load_model(const std::string& model_path) {
-    if (!backend_) throw std::runtime_error("Backend uninitialized!");
-    backend_->load_model(model_path);
+    
+ if (!backend_) throw std::runtime_error("Backend uninitialized!");
+
+    // Auto-Fetch ONNX model from official repository if missing locally!
+    std::string resolved_path = ModelHub::fetch_model(model_path_or_url);
+
+    // Pass verified local file path to backend loader
+    backend_->load_model(resolved_path);
+
 }
 
 void Engine::infer() {
