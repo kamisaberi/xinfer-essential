@@ -103,6 +103,34 @@ if(XINFER_ENABLE_RKNN)
     list(APPEND BACKEND_SOURCES src/backends/rknn/rknn_backend.cpp)
 endif()
 
+
+# 4. AMD Vitis AI Setup
+if(XINFER_ENABLE_VITIS_AI)
+    add_compile_definitions(XINFER_ENABLE_VITIS_AI)
+    list(APPEND BACKEND_SOURCES src/backends/vitis_ai/vitis_backend.cpp)
+endif()
+
+# 5. Qualcomm QNN Setup
+if(XINFER_ENABLE_QNN)
+    add_compile_definitions(XINFER_ENABLE_QNN)
+    list(APPEND BACKEND_SOURCES src/backends/qnn/qnn_backend.cpp)
+endif()
+
+# 6. HailoRT Setup
+if(XINFER_ENABLE_HAILO)
+    add_compile_definitions(XINFER_ENABLE_HAILO)
+    list(APPEND BACKEND_SOURCES src/backends/hailo/hailo_backend.cpp)
+endif()
+
+# 7. Google Coral Edge TPU Setup
+if(XINFER_ENABLE_EDGE_TPU)
+    add_compile_definitions(XINFER_ENABLE_EDGE_TPU)
+    list(APPEND BACKEND_SOURCES src/backends/edge_tpu/edgetpu_backend.cpp)
+endif()
+
+
+
+
 # -------------------------------------------------------------------
 # Build Shared Library
 # -------------------------------------------------------------------
