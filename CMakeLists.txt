@@ -22,8 +22,8 @@ option(XINFER_ENABLE_QNN       "Enable Qualcomm QNN Backend"           OFF)
 option(XINFER_ENABLE_COREML    "Enable Apple CoreML Backend"           OFF)
 option(XINFER_ENABLE_HAILO     "Enable Hailo HailoRT Backend"          OFF)
 option(XINFER_ENABLE_EDGE_TPU  "Enable Google Coral Edge TPU Backend" OFF)
-option(XINFER_BUILD_TESTS      "Build unit tests and benchmarks"       ON)
-option(XINFER_BUILD_EXAMPLES   "Build application examples"            ON)
+option(XINFER_BUILD_TESTS      "Build unit tests and benchmarks"       OFF)
+option(XINFER_BUILD_EXAMPLES   "Build application examples"            OFF)
 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
