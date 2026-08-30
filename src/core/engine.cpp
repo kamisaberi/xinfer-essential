@@ -1,6 +1,7 @@
 #include "xinfer/engine.hpp"
 #include <stdexcept>
 #include <cstring>    // <--- ADD THIS LINE (Fixes std::memcpy)
+#include "xinfer/hub.hpp"      // <--- ADD THIS INCLUDE
 
 
 #ifdef XINFER_ENABLE_TENSORRT
@@ -27,7 +28,7 @@ Engine::Engine(Target target) : target_(target) {
     }
 }
 
-void Engine::load_model(const std::string& model_path) {
+void Engine::load_model(const std::string& model_path_or_url) {
     
  if (!backend_) throw std::runtime_error("Backend uninitialized!");
 
