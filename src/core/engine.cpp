@@ -108,7 +108,14 @@ Engine::Engine(Target target) : target_(target) {
     }
 }
 
-
+// =========================================================================
+// ADDED MISSING METHOD: Engine::load_model
+// =========================================================================
+void Engine::load_model(const std::string& model_path) {
+    if (!backend_) throw std::runtime_error("Backend uninitialized!");
+    std::string resolved_path = ModelHub::fetch_model(model_path);
+    backend_->load_model(resolved_path);
+}
 
 void Engine::infer() {
     if (!backend_) throw std::runtime_error("Backend uninitialized!");

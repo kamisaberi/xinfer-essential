@@ -5,25 +5,39 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-
+# Enforce hidden symbol visibility presets for Shared Library export
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
+
+# RPATH configuration: Ensures binaries always use local libxinfer.so during build & testing
+set(CMAKE_SKIP_BUILD_RPATH FALSE)
+set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 include(FetchContent)
 
 # -------------------------------------------------------------------
-# ALL 15 HARDWARE BACKEND TOGGLES (Default 3 Core Targets ON)
+# ALL 15 HARDWARE BACKEND TOGGLES
 # -------------------------------------------------------------------
-option(XINFER_ENABLE_TENSORRT  "Enable NVIDIA TensorRT Backend"      OFF)
-option(XINFER_ENABLE_OPENVINO  "Enable Intel OpenVINO Backend"      ON)
-option(XINFER_ENABLE_RKNN      "Enable Rockchip RKNN Backend"          OFF)
-option(XINFER_ENABLE_VITIS_AI  "Enable AMD/Xilinx Vitis AI Backend"    OFF)
-option(XINFER_ENABLE_QNN       "Enable Qualcomm QNN Backend"           OFF)
-option(XINFER_ENABLE_COREML    "Enable Apple CoreML Backend"           OFF)
-option(XINFER_ENABLE_HAILO     "Enable Hailo HailoRT Backend"          OFF)
-option(XINFER_ENABLE_EDGE_TPU  "Enable Google Coral Edge TPU Backend" OFF)
-option(XINFER_BUILD_TESTS      "Build unit tests and benchmarks"       OFF)
-option(XINFER_BUILD_EXAMPLES   "Build application examples"            OFF)
+option(XINFER_ENABLE_TENSORRT   "Enable NVIDIA TensorRT Backend"          OFF)
+option(XINFER_ENABLE_OPENVINO   "Enable Intel OpenVINO Backend"          ON)
+option(XINFER_ENABLE_RKNN       "Enable Rockchip RKNN Backend"              OFF)
+option(XINFER_ENABLE_VITIS_AI   "Enable AMD/Xilinx Vitis AI Backend"        OFF)
+option(XINFER_ENABLE_QNN        "Enable Qualcomm QNN Backend"               OFF)
+option(XINFER_ENABLE_COREML     "Enable Apple CoreML Backend"               OFF)
+option(XINFER_ENABLE_RYZEN_AI   "Enable AMD Ryzen AI Backend"             OFF)
+option(XINFER_ENABLE_NEUROPILOT "Enable MediaTek NeuroPilot Backend"     OFF)
+option(XINFER_ENABLE_HAILO      "Enable Hailo HailoRT Backend"              OFF)
+option(XINFER_ENABLE_CVFLOW     "Enable Ambarella CVFlow Backend"        OFF)
+option(XINFER_ENABLE_ENN        "Enable Samsung ENN Backend"              OFF)
+option(XINFER_ENABLE_EDGE_TPU   "Enable Google Coral Edge TPU Backend"     OFF)
+option(XINFER_ENABLE_FPGA_AI    "Enable Intel FPGA AI Suite Backend"     OFF)
+option(XINFER_ENABLE_VECTORBLOX "Enable Microchip VectorBlox Backend"     OFF)
+option(XINFER_ENABLE_SENSAI     "Enable Lattice sensAI Backend"           OFF)
+
+option(XINFER_BUILD_TESTS       "Build unit tests and benchmarks"           OFF)
+option(XINFER_BUILD_EXAMPLES    "Build application examples"                OFF)
 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
@@ -34,22 +48,18 @@ set(CORE_SOURCES
     src/core/memory.cpp
     src/core/tensor.cpp
     src/core/engine.cpp
-    src/core/hub.cpp          # <--- ADD THIS LINE
+    src/core/hub.cpp
     src/utils/preproc.cpp
     src/utils/postproc.cpp
 )
 
 set(BACKEND_SOURCES "")
 
-
-
-
-
 # -------------------------------------------------------------------
 # 1. TensorRT Setup (NVIDIA)
 # -------------------------------------------------------------------
 if(XINFER_ENABLE_TENSORRT)
-    message(WARNING "CUDA ACTIVATING ${XINFER_ENABLE_TENSORRT}")
+    message(STATUS "[xInfer] Enabling NVIDIA TensorRT Backend")
     enable_language(CUDA)
     add_compile_definitions(XINFER_ENABLE_TENSORRT)
     find_package(CUDA REQUIRED)
@@ -80,10 +90,8 @@ endif()
 # -------------------------------------------------------------------
 if(XINFER_ENABLE_RKNN)
     add_compile_definitions(XINFER_ENABLE_RKNN)
-    
     find_library(RKNN_RT rknnrt PATHS /usr/local/lib /usr/lib)
 
-    # If headers are missing locally, CMake automatically fetches RKNN C-API from GitHub!
     find_path(RKNN_HEADER_DIR rknn_api.h PATHS /usr/local/include/rknn /usr/include)
 
     if(NOT RKNN_HEADER_DIR)
@@ -103,36 +111,112 @@ if(XINFER_ENABLE_RKNN)
     list(APPEND BACKEND_SOURCES src/backends/rknn/rknn_backend.cpp)
 endif()
 
-
-# 4. AMD Vitis AI Setup
+# -------------------------------------------------------------------
+# 4. AMD / Xilinx Vitis AI Setup
+# -------------------------------------------------------------------
 if(XINFER_ENABLE_VITIS_AI)
     add_compile_definitions(XINFER_ENABLE_VITIS_AI)
     list(APPEND BACKEND_SOURCES src/backends/vitis_ai/vitis_backend.cpp)
 endif()
 
+# -------------------------------------------------------------------
 # 5. Qualcomm QNN Setup
+# -------------------------------------------------------------------
 if(XINFER_ENABLE_QNN)
     add_compile_definitions(XINFER_ENABLE_QNN)
     list(APPEND BACKEND_SOURCES src/backends/qnn/qnn_backend.cpp)
 endif()
 
-# 6. HailoRT Setup
+# -------------------------------------------------------------------
+# 6. Apple CoreML Setup
+# -------------------------------------------------------------------
+if(XINFER_ENABLE_COREML)
+    add_compile_definitions(XINFER_ENABLE_COREML)
+    if(APPLE)
+        enable_language(OBJCXX)
+        list(APPEND BACKEND_SOURCES src/backends/coreml/coreml_backend.mm)
+        find_library(COREML_FRAMEWORK CoreML REQUIRED)
+        find_library(METAL_FRAMEWORK Metal REQUIRED)
+        find_library(FOUNDATION_FRAMEWORK Foundation REQUIRED)
+    else()
+        list(APPEND BACKEND_SOURCES src/backends/coreml/coreml_backend.cpp)
+    endif()
+endif()
+
+# -------------------------------------------------------------------
+# 7. AMD Ryzen AI Setup
+# -------------------------------------------------------------------
+if(XINFER_ENABLE_RYZEN_AI)
+    add_compile_definitions(XINFER_ENABLE_RYZEN_AI)
+    list(APPEND BACKEND_SOURCES src/backends/ryzen_ai/ryzen_backend.cpp)
+endif()
+
+# -------------------------------------------------------------------
+# 8. MediaTek NeuroPilot Setup
+# -------------------------------------------------------------------
+if(XINFER_ENABLE_NEUROPILOT)
+    add_compile_definitions(XINFER_ENABLE_NEUROPILOT)
+    list(APPEND BACKEND_SOURCES src/backends/neuropilot/neuropilot_backend.cpp)
+endif()
+
+# -------------------------------------------------------------------
+# 9. Hailo HailoRT Setup
+# -------------------------------------------------------------------
 if(XINFER_ENABLE_HAILO)
     add_compile_definitions(XINFER_ENABLE_HAILO)
     list(APPEND BACKEND_SOURCES src/backends/hailo/hailo_backend.cpp)
 endif()
 
-# 7. Google Coral Edge TPU Setup
+# -------------------------------------------------------------------
+# 10. Ambarella CVFlow Setup
+# -------------------------------------------------------------------
+if(XINFER_ENABLE_CVFLOW)
+    add_compile_definitions(XINFER_ENABLE_CVFLOW)
+    list(APPEND BACKEND_SOURCES src/backends/cvflow/cvflow_backend.cpp)
+endif()
+
+# -------------------------------------------------------------------
+# 11. Samsung ENN Setup
+# -------------------------------------------------------------------
+if(XINFER_ENABLE_ENN)
+    add_compile_definitions(XINFER_ENABLE_ENN)
+    list(APPEND BACKEND_SOURCES src/backends/enn/enn_backend.cpp)
+endif()
+
+# -------------------------------------------------------------------
+# 12. Google Coral Edge TPU Setup
+# -------------------------------------------------------------------
 if(XINFER_ENABLE_EDGE_TPU)
     add_compile_definitions(XINFER_ENABLE_EDGE_TPU)
     list(APPEND BACKEND_SOURCES src/backends/edge_tpu/edgetpu_backend.cpp)
 endif()
 
-
-
+# -------------------------------------------------------------------
+# 13. Intel FPGA AI Suite Setup
+# -------------------------------------------------------------------
+if(XINFER_ENABLE_FPGA_AI)
+    add_compile_definitions(XINFER_ENABLE_FPGA_AI)
+    list(APPEND BACKEND_SOURCES src/backends/fpga_ai/fpga_backend.cpp)
+endif()
 
 # -------------------------------------------------------------------
-# Build Shared Library
+# 14. Microchip VectorBlox Setup
+# -------------------------------------------------------------------
+if(XINFER_ENABLE_VECTORBLOX)
+    add_compile_definitions(XINFER_ENABLE_VECTORBLOX)
+    list(APPEND BACKEND_SOURCES src/backends/vectorblox/vectorblox_backend.cpp)
+endif()
+
+# -------------------------------------------------------------------
+# 15. Lattice sensAI Setup
+# -------------------------------------------------------------------
+if(XINFER_ENABLE_SENSAI)
+    add_compile_definitions(XINFER_ENABLE_SENSAI)
+    list(APPEND BACKEND_SOURCES src/backends/sensai/sensai_backend.cpp)
+endif()
+
+# -------------------------------------------------------------------
+# Build Shared Library (libxinfer.so)
 # -------------------------------------------------------------------
 add_library(xinfer SHARED ${CORE_SOURCES} ${BACKEND_SOURCES})
 add_library(xinfer::xinfer ALIAS xinfer)
@@ -144,7 +228,9 @@ set_target_properties(xinfer PROPERTIES
     OUTPUT_NAME "xinfer"
 )
 
-
+# -------------------------------------------------------------------
+# Link Hardware Vendor Libraries
+# -------------------------------------------------------------------
 if(XINFER_ENABLE_TENSORRT)
     target_link_libraries(xinfer PRIVATE ${CUDA_LIBRARIES} ${TENSORRT_NVINFER})
 endif()
@@ -157,6 +243,13 @@ if(XINFER_ENABLE_RKNN AND RKNN_RT)
     target_link_libraries(xinfer PRIVATE ${RKNN_RT})
 endif()
 
+if(XINFER_ENABLE_COREML AND APPLE)
+    target_link_libraries(xinfer PRIVATE ${COREML_FRAMEWORK} ${METAL_FRAMEWORK} ${FOUNDATION_FRAMEWORK})
+endif()
+
+# -------------------------------------------------------------------
+# Subdirectories & Examples
+# -------------------------------------------------------------------
 if(XINFER_BUILD_TESTS)
     enable_testing()
     add_subdirectory(tests)
@@ -165,17 +258,18 @@ endif()
 if(XINFER_BUILD_EXAMPLES)
     add_executable(xinfer_demo examples/01_tensorrt_yolo.cpp)
     target_link_libraries(xinfer_demo PRIVATE xinfer::xinfer)
+
+    add_executable(demo_face_onnx examples/05_huggingface_face_detection.cpp)
+    target_link_libraries(demo_face_onnx PRIVATE xinfer::xinfer)
 endif()
 
-
-
-# ----------------------------------------------------
+# -------------------------------------------------------------------
 # INSTALLATION RULES
-# ----------------------------------------------------
+# -------------------------------------------------------------------
 install(TARGETS xinfer DESTINATION /usr/local/lib)
 install(DIRECTORY include/xinfer DESTINATION /usr/local/include)
 
 
 
-add_executable(demo_face_onnx examples/05_huggingface_face_detection.cpp)
-target_link_libraries(demo_face_onnx PRIVATE xinfer::xinfer)
+# add_executable(demo_face_onnx examples/05_huggingface_face_detection.cpp)
+# target_link_libraries(demo_face_onnx PUBLIC xinfer::xinfer)
