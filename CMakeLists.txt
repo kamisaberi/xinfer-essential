@@ -11,12 +11,19 @@ set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
 
 include(FetchContent)
 
-# Feature Flags
-option(XINFER_ENABLE_TENSORRT "Enable NVIDIA TensorRT Backend" OFF)
-option(XINFER_ENABLE_OPENVINO "Enable Intel OpenVINO Backend" ON)
-option(XINFER_ENABLE_RKNN     "Enable Rockchip RKNN Backend"     OFF)
-option(XINFER_BUILD_EXAMPLES  "Build example applications"        ON)
-option(XINFER_BUILD_TESTS     "Build unit tests and benchmarks"  ON)
+# -------------------------------------------------------------------
+# ALL 15 HARDWARE BACKEND TOGGLES (Default 3 Core Targets ON)
+# -------------------------------------------------------------------
+option(XINFER_ENABLE_TENSORRT  "Enable NVIDIA TensorRT Backend"      ON)
+option(XINFER_ENABLE_OPENVINO  "Enable Intel OpenVINO Backend"      ON)
+option(XINFER_ENABLE_RKNN      "Enable Rockchip RKNN Backend"          OFF)
+option(XINFER_ENABLE_VITIS_AI  "Enable AMD/Xilinx Vitis AI Backend"    OFF)
+option(XINFER_ENABLE_QNN       "Enable Qualcomm QNN Backend"           OFF)
+option(XINFER_ENABLE_COREML    "Enable Apple CoreML Backend"           OFF)
+option(XINFER_ENABLE_HAILO     "Enable Hailo HailoRT Backend"          OFF)
+option(XINFER_ENABLE_EDGE_TPU  "Enable Google Coral Edge TPU Backend" OFF)
+option(XINFER_BUILD_TESTS      "Build unit tests and benchmarks"       ON)
+option(XINFER_BUILD_EXAMPLES   "Build application examples"            ON)
 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
