@@ -23,6 +23,7 @@ set(CORE_SOURCES
     src/core/memory.cpp
     src/core/tensor.cpp
     src/core/engine.cpp
+    src/core/hub.cpp          # <--- ADD THIS LINE
     src/utils/preproc.cpp
     src/utils/postproc.cpp
 )
