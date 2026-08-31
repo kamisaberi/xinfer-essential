@@ -271,7 +271,18 @@ target_link_libraries(plugin_telemetry_profiler PRIVATE xinfer::xinfer)
 
 add_library(plugin_softmax_topk SHARED src/plugins/softmax_topk_plugin.cpp)
 target_link_libraries(plugin_softmax_topk PRIVATE xinfer::xinfer)
-# -------------------------------------------------------------------
+
+add_library(plugin_rga_resizer SHARED src/plugins/rga_resizer_plugin.cpp)
+target_link_libraries(plugin_rga_resizer PRIVATE xinfer::xinfer)
+
+add_library(plugin_dmabuf_allocator SHARED src/plugins/dmabuf_allocator_plugin.cpp)
+target_link_libraries(plugin_dmabuf_allocator PRIVATE xinfer::xinfer)
+
+add_library(plugin_tpm2_key_exchange SHARED src/plugins/tpm2_key_exchange_plugin.cpp)
+target_link_libraries(plugin_tpm2_key_exchange PRIVATE xinfer::xinfer)
+
+add_library(plugin_optical_flow SHARED src/plugins/optical_flow_plugin.cpp)
+target_link_libraries(plugin_optical_flow PRIVATE xinfer::xinfer)# -------------------------------------------------------------------
 # Subdirectories & Examples
 # -------------------------------------------------------------------
 if(XINFER_BUILD_TESTS)
