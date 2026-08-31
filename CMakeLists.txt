@@ -252,49 +252,45 @@ endif()
 
 
 # ----------------------------------------------------
-# BUILD PLUGINS (.so files)
+# BUILD ALL 30 PLUGINS (.so files)
 # ----------------------------------------------------
-add_library(plugin_model_decryptor SHARED src/plugins/model_decryptor_plugin.cpp)
-target_link_libraries(plugin_model_decryptor PRIVATE xinfer::xinfer)
+macro(add_xinfer_plugin PLUGIN_TARGET SOURCE_FILE)
+    add_library(${PLUGIN_TARGET} SHARED ${SOURCE_FILE})
+    target_link_libraries(${PLUGIN_TARGET} PRIVATE xinfer::xinfer)
+endmacro()
 
-add_library(plugin_yolo_nms SHARED src/plugins/yolo_nms_plugin.cpp)
-target_link_libraries(plugin_yolo_nms PRIVATE xinfer::xinfer)
+add_xinfer_plugin(plugin_model_decryptor src/plugins/model_decryptor_plugin.cpp)
+add_xinfer_plugin(plugin_yolo_nms src/plugins/yolo_nms_plugin.cpp)
+add_xinfer_plugin(plugin_audio_melspectrogram src/plugins/audio_melspectrogram_plugin.cpp)
+add_xinfer_plugin(plugin_dynamic_quantizer src/plugins/dynamic_quantizer_plugin.cpp)
+add_xinfer_plugin(plugin_telemetry_profiler src/plugins/telemetry_profiler_plugin.cpp)
+add_xinfer_plugin(plugin_softmax_topk src/plugins/softmax_topk_plugin.cpp)
+add_xinfer_plugin(plugin_rga_resizer src/plugins/rga_resizer_plugin.cpp)
+add_xinfer_plugin(plugin_dmabuf_allocator src/plugins/dmabuf_allocator_plugin.cpp)
+add_xinfer_plugin(plugin_tpm2_key_exchange src/plugins/tpm2_key_exchange_plugin.cpp)
+add_xinfer_plugin(plugin_optical_flow src/plugins/optical_flow_plugin.cpp)
+add_xinfer_plugin(plugin_paged_attention src/plugins/paged_attention_plugin.cpp)
+add_xinfer_plugin(plugin_eta_packet src/plugins/eta_packet_plugin.cpp)
+add_xinfer_plugin(plugin_amp_fallback src/plugins/amp_fallback_plugin.cpp)
+add_xinfer_plugin(plugin_lidar_voxelizer src/plugins/lidar_voxelizer_plugin.cpp)
 
-add_library(plugin_audio_melspectrogram SHARED src/plugins/audio_melspectrogram_plugin.cpp)
-target_link_libraries(plugin_audio_melspectrogram PRIVATE xinfer::xinfer)
-
-add_library(plugin_dynamic_quantizer SHARED src/plugins/dynamic_quantizer_plugin.cpp)
-target_link_libraries(plugin_dynamic_quantizer PRIVATE xinfer::xinfer)
-
-add_library(plugin_telemetry_profiler SHARED src/plugins/telemetry_profiler_plugin.cpp)
-target_link_libraries(plugin_telemetry_profiler PRIVATE xinfer::xinfer)
-
-add_library(plugin_softmax_topk SHARED src/plugins/softmax_topk_plugin.cpp)
-target_link_libraries(plugin_softmax_topk PRIVATE xinfer::xinfer)
-
-add_library(plugin_rga_resizer SHARED src/plugins/rga_resizer_plugin.cpp)
-target_link_libraries(plugin_rga_resizer PRIVATE xinfer::xinfer)
-
-add_library(plugin_dmabuf_allocator SHARED src/plugins/dmabuf_allocator_plugin.cpp)
-target_link_libraries(plugin_dmabuf_allocator PRIVATE xinfer::xinfer)
-
-add_library(plugin_tpm2_key_exchange SHARED src/plugins/tpm2_key_exchange_plugin.cpp)
-target_link_libraries(plugin_tpm2_key_exchange PRIVATE xinfer::xinfer)
-
-add_library(plugin_optical_flow SHARED src/plugins/optical_flow_plugin.cpp)
-target_link_libraries(plugin_optical_flow PRIVATE xinfer::xinfer)
-
-add_library(plugin_paged_attention SHARED src/plugins/paged_attention_plugin.cpp)
-target_link_libraries(plugin_paged_attention PRIVATE xinfer::xinfer)
-
-add_library(plugin_eta_packet SHARED src/plugins/eta_packet_plugin.cpp)
-target_link_libraries(plugin_eta_packet PRIVATE xinfer::xinfer)
-
-add_library(plugin_amp_fallback SHARED src/plugins/amp_fallback_plugin.cpp)
-target_link_libraries(plugin_amp_fallback PRIVATE xinfer::xinfer)
-
-add_library(plugin_lidar_voxelizer SHARED src/plugins/lidar_voxelizer_plugin.cpp)
-target_link_libraries(plugin_lidar_voxelizer PRIVATE xinfer::xinfer)
+# New 16 Plugins
+add_xinfer_plugin(plugin_pytorch_parser src/plugins/pytorch_parser_plugin.cpp)
+add_xinfer_plugin(plugin_gguf_parser src/plugins/gguf_parser_plugin.cpp)
+add_xinfer_plugin(plugin_tflite_parser src/plugins/tflite_parser_plugin.cpp)
+add_xinfer_plugin(plugin_coreml_parser src/plugins/coreml_parser_plugin.cpp)
+add_xinfer_plugin(plugin_nvdec_decoder src/plugins/nvdec_decoder_plugin.cpp)
+add_xinfer_plugin(plugin_onevpl_decoder src/plugins/onevpl_decoder_plugin.cpp)
+add_xinfer_plugin(plugin_neon_preproc src/plugins/neon_preproc_plugin.cpp)
+add_xinfer_plugin(plugin_mask_polygon src/plugins/mask_polygon_plugin.cpp)
+add_xinfer_plugin(plugin_nvmm_allocator src/plugins/nvmm_allocator_plugin.cpp)
+add_xinfer_plugin(plugin_shm_allocator src/plugins/shm_allocator_plugin.cpp)
+add_xinfer_plugin(plugin_continuous_batching src/plugins/continuous_batching_plugin.cpp)
+add_xinfer_plugin(plugin_speculative_decoding src/plugins/speculative_decoding_plugin.cpp)
+add_xinfer_plugin(plugin_custom_operator src/plugins/custom_operator_plugin.cpp)
+add_xinfer_plugin(plugin_watermark_verifier src/plugins/watermark_verifier_plugin.cpp)
+add_xinfer_plugin(plugin_thermal_governor src/plugins/thermal_governor_plugin.cpp)
+add_xinfer_plugin(plugin_multi_npu_sharder src/plugins/multi_npu_sharder_plugin.cpp)
 
 
 # -------------------------------------------------------------------
@@ -322,20 +318,16 @@ endif()
 
 install(TARGETS 
     xinfer 
-    plugin_model_decryptor 
-    plugin_yolo_nms 
-    plugin_audio_melspectrogram 
-    plugin_dynamic_quantizer 
-    plugin_telemetry_profiler 
-    plugin_softmax_topk 
-    plugin_rga_resizer 
-    plugin_dmabuf_allocator 
-    plugin_tpm2_key_exchange 
-    plugin_optical_flow 
-    plugin_paged_attention 
-    plugin_eta_packet 
-    plugin_amp_fallback 
-    plugin_lidar_voxelizer 
+    plugin_model_decryptor plugin_yolo_nms plugin_audio_melspectrogram 
+    plugin_dynamic_quantizer plugin_telemetry_profiler plugin_softmax_topk 
+    plugin_rga_resizer plugin_dmabuf_allocator plugin_tpm2_key_exchange 
+    plugin_optical_flow plugin_paged_attention plugin_eta_packet 
+    plugin_amp_fallback plugin_lidar_voxelizer plugin_pytorch_parser 
+    plugin_gguf_parser plugin_tflite_parser plugin_coreml_parser 
+    plugin_nvdec_decoder plugin_onevpl_decoder plugin_neon_preproc 
+    plugin_mask_polygon plugin_nvmm_allocator plugin_shm_allocator 
+    plugin_continuous_batching plugin_speculative_decoding plugin_custom_operator 
+    plugin_watermark_verifier plugin_thermal_governor plugin_multi_npu_sharder 
     DESTINATION /usr/local/lib
 )
 install(DIRECTORY include/xinfer DESTINATION /usr/local/include)
