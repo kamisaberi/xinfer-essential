@@ -8,3 +8,7 @@
 #include "xinfer/backend.hpp"
 #include "xinfer/engine.hpp"
 #include "xinfer/hub.hpp"        // <--- ADD THIS LINE
+
+
+#include "xinfer/plugin.hpp"
+#include "xinfer/plugin_manager.hpp"
