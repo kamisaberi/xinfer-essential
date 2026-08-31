@@ -1,7 +1,3 @@
-Here is a complete, detailed, and comprehensive `README.md` for **xInfer Essential**, written professionally without icons or emojis.
-
-***
-
 # xInfer Essential: High-Performance C++20 Universal AI Runtime
 
 xInfer Essential is a lightweight, zero-copy C++20 deep learning inference runtime designed for heterogeneous edge accelerators, embedded SoCs, and data center GPUs. Built as a high-performance C++ shared library (`libxinfer.so`), it abstracts vendor-specific neural processing SDKs behind a unified, low-overhead C++ API. 
