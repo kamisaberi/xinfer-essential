@@ -332,6 +332,10 @@ install(TARGETS
     plugin_dmabuf_allocator 
     plugin_tpm2_key_exchange 
     plugin_optical_flow 
+    plugin_paged_attention 
+    plugin_eta_packet 
+    plugin_amp_fallback 
+    plugin_lidar_voxelizer 
     DESTINATION /usr/local/lib
 )
 install(DIRECTORY include/xinfer DESTINATION /usr/local/include)
