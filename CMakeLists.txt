@@ -317,6 +317,10 @@ install(TARGETS
     plugin_dynamic_quantizer 
     plugin_telemetry_profiler 
     plugin_softmax_topk 
+    plugin_rga_resizer 
+    plugin_dmabuf_allocator 
+    plugin_tpm2_key_exchange 
+    plugin_optical_flow 
     DESTINATION /usr/local/lib
 )
 install(DIRECTORY include/xinfer DESTINATION /usr/local/include)
