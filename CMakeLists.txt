@@ -290,7 +290,20 @@ endif()
 # -------------------------------------------------------------------
 # INSTALLATION RULES
 # -------------------------------------------------------------------
-install(TARGETS xinfer DESTINATION /usr/local/lib)
+
+
+# install(TARGETS xinfer DESTINATION /usr/local/lib)
+
+install(TARGETS 
+    xinfer 
+    plugin_model_decryptor 
+    plugin_yolo_nms 
+    plugin_audio_melspectrogram 
+    plugin_dynamic_quantizer 
+    plugin_telemetry_profiler 
+    plugin_softmax_topk 
+    DESTINATION /usr/local/lib
+)
 install(DIRECTORY include/xinfer DESTINATION /usr/local/include)
 
 
