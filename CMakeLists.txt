@@ -282,7 +282,11 @@ add_library(plugin_tpm2_key_exchange SHARED src/plugins/tpm2_key_exchange_plugin
 target_link_libraries(plugin_tpm2_key_exchange PRIVATE xinfer::xinfer)
 
 add_library(plugin_optical_flow SHARED src/plugins/optical_flow_plugin.cpp)
-target_link_libraries(plugin_optical_flow PRIVATE xinfer::xinfer)# -------------------------------------------------------------------
+target_link_libraries(plugin_optical_flow PRIVATE xinfer::xinfer)
+
+
+
+# -------------------------------------------------------------------
 # Subdirectories & Examples
 # -------------------------------------------------------------------
 if(XINFER_BUILD_TESTS)
