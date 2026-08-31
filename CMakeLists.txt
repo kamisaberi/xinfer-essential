@@ -260,6 +260,17 @@ target_link_libraries(plugin_model_decryptor PRIVATE xinfer::xinfer)
 add_library(plugin_yolo_nms SHARED src/plugins/yolo_nms_plugin.cpp)
 target_link_libraries(plugin_yolo_nms PRIVATE xinfer::xinfer)
 
+add_library(plugin_audio_melspectrogram SHARED src/plugins/audio_melspectrogram_plugin.cpp)
+target_link_libraries(plugin_audio_melspectrogram PRIVATE xinfer::xinfer)
+
+add_library(plugin_dynamic_quantizer SHARED src/plugins/dynamic_quantizer_plugin.cpp)
+target_link_libraries(plugin_dynamic_quantizer PRIVATE xinfer::xinfer)
+
+add_library(plugin_telemetry_profiler SHARED src/plugins/telemetry_profiler_plugin.cpp)
+target_link_libraries(plugin_telemetry_profiler PRIVATE xinfer::xinfer)
+
+add_library(plugin_softmax_topk SHARED src/plugins/softmax_topk_plugin.cpp)
+target_link_libraries(plugin_softmax_topk PRIVATE xinfer::xinfer)
 # -------------------------------------------------------------------
 # Subdirectories & Examples
 # -------------------------------------------------------------------
