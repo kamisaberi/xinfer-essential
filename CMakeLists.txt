@@ -51,6 +51,8 @@ set(CORE_SOURCES
     src/core/hub.cpp
     src/utils/preproc.cpp
     src/utils/postproc.cpp
+    src/core/plugin_manager.cpp   # <--- ADDED PLUGIN MANAGER
+
 )
 
 set(BACKEND_SOURCES "")
@@ -246,6 +248,17 @@ endif()
 if(XINFER_ENABLE_COREML AND APPLE)
     target_link_libraries(xinfer PRIVATE ${COREML_FRAMEWORK} ${METAL_FRAMEWORK} ${FOUNDATION_FRAMEWORK})
 endif()
+
+
+
+# ----------------------------------------------------
+# BUILD PLUGINS (.so files)
+# ----------------------------------------------------
+add_library(plugin_model_decryptor SHARED src/plugins/model_decryptor_plugin.cpp)
+target_link_libraries(plugin_model_decryptor PRIVATE xinfer::xinfer)
+
+add_library(plugin_yolo_nms SHARED src/plugins/yolo_nms_plugin.cpp)
+target_link_libraries(plugin_yolo_nms PRIVATE xinfer::xinfer)
 
 # -------------------------------------------------------------------
 # Subdirectories & Examples
