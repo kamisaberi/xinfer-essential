@@ -284,6 +284,17 @@ target_link_libraries(plugin_tpm2_key_exchange PRIVATE xinfer::xinfer)
 add_library(plugin_optical_flow SHARED src/plugins/optical_flow_plugin.cpp)
 target_link_libraries(plugin_optical_flow PRIVATE xinfer::xinfer)
 
+add_library(plugin_paged_attention SHARED src/plugins/paged_attention_plugin.cpp)
+target_link_libraries(plugin_paged_attention PRIVATE xinfer::xinfer)
+
+add_library(plugin_eta_packet SHARED src/plugins/eta_packet_plugin.cpp)
+target_link_libraries(plugin_eta_packet PRIVATE xinfer::xinfer)
+
+add_library(plugin_amp_fallback SHARED src/plugins/amp_fallback_plugin.cpp)
+target_link_libraries(plugin_amp_fallback PRIVATE xinfer::xinfer)
+
+add_library(plugin_lidar_voxelizer SHARED src/plugins/lidar_voxelizer_plugin.cpp)
+target_link_libraries(plugin_lidar_voxelizer PRIVATE xinfer::xinfer)
 
 
 # -------------------------------------------------------------------
