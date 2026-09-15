@@ -2,6 +2,7 @@
 #include <iostream>
 #include <algorithm>
 #include <cmath>
+#include <cstdint>
 
 class RockchipRGA2DResizerPlugin : public xinfer::plugin::IInferencePlugin {
 public:

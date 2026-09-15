@@ -4,6 +4,7 @@
 #include <cmath>
 #include <numeric>
 #include <algorithm>
+#include <iomanip>
 
 class SoftmaxTopKPlugin : public xinfer::plugin::IInferencePlugin {
 public:
