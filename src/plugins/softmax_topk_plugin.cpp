@@ -25,35 +25,33 @@ public:
 
         if (count == 0 || !logits) return false;
 
-        // 1. Softmax with Temperature
-        std::vector<float> probabilities(count);
-        float max_logit = *std::max_element(logits, logits + count);
+        // 1. Compute Temperature-Scaled Softmax
+        std::vector<float> probs(count);
+        float max_val = *std::max_element(logits, logits + count);
         float sum_exp = 0.0f;
 
         for (size_t i = 0; i < count; ++i) {
-            probabilities[i] = std::exp((logits[i] - max_logit) / temperature_);
-            sum_exp += probabilities[i];
+            probs[i] = std::exp((logits[i] - max_val) / temperature_);
+            sum_exp += probs[i];
         }
-
         for (size_t i = 0; i < count; ++i) {
-            probabilities[i] /= sum_exp;
+            probs[i] /= sum_exp;
         }
 
-        // 2. Extract Top-K Tokens / Classes
+        // 2. Extract and print Top-5 Classes
         std::vector<size_t> indices(count);
         std::iota(indices.begin(), indices.end(), 0);
-
         std::partial_sort(indices.begin(), indices.begin() + top_k_, indices.end(),
-            [&probabilities](size_t a, size_t b) {
-                return probabilities[a] > probabilities[b];
-            });
+            [&probs](size_t a, size_t b) { return probs[a] > probs[b]; });
 
-        std::cout << "[xInfer Plugin: Postproc] Top-1 Selected Class ID: " << indices[0] 
-                  << " (Prob: " << probabilities[indices[0]] * 100.0f << "%)" << std::endl;
-
+        std::cout << "\n[Plugin: Softmax Top-K] Decoded Top-" << top_k_ << " Classes:" << std::endl;
+        for (int i = 0; i < top_k_; ++i) {
+            size_t class_id = indices[i];
+            std::cout << "  Rank " << (i + 1) << " -> Class ID: " << std::setw(4) << class_id 
+                    << " | Probability: " << std::fixed << std::setprecision(2) << probs[class_id] * 100.0f << " %" << std::endl;
+        }
         return true;
     }
-
     void shutdown() override {
         std::cout << "[xInfer Plugin: Postproc] Softmax Top-K Decoder shut down." << std::endl;
     }
