@@ -307,6 +307,24 @@ if(XINFER_BUILD_EXAMPLES)
 
     add_executable(demo_face_onnx examples/05_huggingface_face_detection.cpp)
     target_link_libraries(demo_face_onnx PRIVATE xinfer::xinfer)
+
+    
+
+    add_executable(demo_plugin_vision_yolo examples/07_plugin_vision_yolo.cpp)
+    target_link_libraries(demo_plugin_vision_yolo PRIVATE xinfer::xinfer)
+
+    add_executable(demo_plugin_audio_yamnet examples/08_plugin_audio_yamnet.cpp)
+    target_link_libraries(demo_plugin_audio_yamnet PRIVATE xinfer::xinfer)
+
+    add_executable(demo_plugin_softmax_topk examples/09_plugin_softmax_topk.cpp)
+    target_link_libraries(demo_plugin_softmax_topk PRIVATE xinfer::xinfer)
+
+    add_executable(demo_plugin_model_decryptor examples/10_plugin_model_decryptor.cpp)
+    target_link_libraries(demo_plugin_model_decryptor PRIVATE xinfer::xinfer)
+
+    add_executable(demo_plugin_eta_traffic examples/11_plugin_eta_traffic.cpp)
+    target_link_libraries(demo_plugin_eta_traffic PRIVATE xinfer::xinfer)
+
 endif()
 
 # -------------------------------------------------------------------
