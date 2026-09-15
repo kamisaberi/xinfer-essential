@@ -3,6 +3,7 @@
 #include <cmath>
 #include <iomanip>
 #include <xinfer/xinfer.hpp>
+#include <cstdint>
 
 int main() {
     std::cout << "==========================================================" << std::endl;
