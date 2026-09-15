@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <xinfer/xinfer.hpp>
+#include <cstdint>
 
 int main() {
     std::cout << "==========================================================" << std::endl;
