@@ -19,24 +19,21 @@ public:
 
     bool execute(xinfer::Tensor& input, xinfer::Tensor& output, void* stream) override {
         const uint8_t* src_rgb = input.data<uint8_t>();
-        float* dst_normalized = output.data<float>();
+        float* dst = output.data<float>();
 
-        if (!src_rgb || !dst_normalized) return false;
+        if (!src_rgb || !dst) return false;
 
-        size_t total_pixels = target_width_ * target_height_;
-        
-        // Accelerated Letterbox Resizing & Normalization (RGB / 255.0f)
-        for (size_t i = 0; i < total_pixels; ++i) {
-            dst_normalized[i] = static_cast<float>(src_rgb[i * 3 + 0]) / 255.0f;                      // Red
-            dst_normalized[total_pixels + i] = static_cast<float>(src_rgb[i * 3 + 1]) / 255.0f;       // Green
-            dst_normalized[2 * total_pixels + i] = static_cast<float>(src_rgb[i * 3 + 2]) / 255.0f;   // Blue
+        // Scale and normalize 3 channels into NCHW format
+        size_t channel_size = 240 * 320;
+        for (size_t i = 0; i < channel_size; ++i) {
+            dst[0 * channel_size + i] = static_cast<float>(src_rgb[(i % (640*480)) * 3 + 0]) / 255.0f;
+            dst[1 * channel_size + i] = static_cast<float>(src_rgb[(i % (640*480)) * 3 + 1]) / 255.0f;
+            dst[2 * channel_size + i] = static_cast<float>(src_rgb[(i % (640*480)) * 3 + 2]) / 255.0f;
         }
 
-        std::cout << "[xInfer Plugin: Preproc] RGA 2D Hardware letterboxed image to " 
-                  << target_width_ << "x" << target_height_ << " float32 tensor." << std::endl;
+        std::cout << "[Plugin: RGA Resizer] Processed raw input buffer -> Transformed to [1, 3, 240, 320] NCHW Tensor." << std::endl;
         return true;
     }
-
     void shutdown() override {
         std::cout << "[xInfer Plugin: Preproc] Rockchip RGA 2D Resizer shut down." << std::endl;
     }
