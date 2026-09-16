@@ -1,4 +1,6 @@
 #pragma once
+#include "xinfer/export.hpp"  // <--- REQUIRED FOR SYMBOL EXPORT
+
 #include <vector>
 #include <cstdint>
 
