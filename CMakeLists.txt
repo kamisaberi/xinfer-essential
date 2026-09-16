@@ -354,6 +354,15 @@ if(XINFER_BUILD_EXAMPLES)
     add_executable(demo_optical_flow_pipeline examples/16_optical_flow_tracking.cpp)
     target_link_libraries(demo_optical_flow_pipeline PRIVATE xinfer::xinfer)
 
+    add_executable(demo_audio_spectrogram examples/17_audio_spectrogram_pipeline.cpp)
+    target_link_libraries(demo_audio_spectrogram PRIVATE xinfer::xinfer)
+
+    add_executable(demo_lidar_voxelizer examples/18_lidar_voxelizer_pipeline.cpp)
+    target_link_libraries(demo_lidar_voxelizer PRIVATE xinfer::xinfer)
+
+    add_executable(demo_segmentation_polygon examples/19_segmentation_polygon_pipeline.cpp)
+    target_link_libraries(demo_segmentation_polygon PRIVATE xinfer::xinfer)
+
 endif()
 
 # -------------------------------------------------------------------
