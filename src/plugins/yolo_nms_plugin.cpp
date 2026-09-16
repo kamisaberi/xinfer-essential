@@ -14,10 +14,29 @@ public:
     }
 
     bool execute(xinfer::Tensor& input, xinfer::Tensor& output, void* stream) override {
-        // Runs fast C++/SIMD NMS on output tensor data
-        const float* raw_boxes = input.data<float>();
-        auto boxes = xinfer::utils::non_max_suppression(raw_boxes, 8400, 80, 0.25f, 0.45f);
-        std::cout << "[xInfer Plugin: Postproc] Filtered " << boxes.size() << " detected object bounding boxes." << std::endl;
+        const float* raw_data = input.data<float>();
+        size_t count = input.element_count();
+        if (!raw_data || count == 0) return false;
+
+        // If evaluating UltraFace [1, 4420, 2] score tensor
+        if (count == 4420 * 2) {
+            int detected = 0;
+            for (size_t i = 0; i < 4420; ++i) {
+                if (raw_data[i * 2 + 1] > 0.70f) {
+                    detected++;
+                }
+            }
+            std::cout << "[xInfer Plugin: Postproc] Filtered " << detected << " detected object bounding boxes." << std::endl;
+        } else {
+            // Standard YOLO format [num_boxes, 5 + num_classes]
+            int num_classes = 80;
+            int stride = 5 + num_classes;
+            int num_boxes = static_cast<int>(count / stride);
+            if (num_boxes > 0) {
+                auto boxes = xinfer::utils::non_max_suppression(raw_data, num_boxes, num_classes, 0.25f, 0.45f);
+                std::cout << "[xInfer Plugin: Postproc] Filtered " << boxes.size() << " detected object bounding boxes." << std::endl;
+            }
+        }
         return true;
     }
 
@@ -30,7 +49,7 @@ extern "C" {
     XINFER_API xinfer::plugin::IInferencePlugin* create_plugin() {
         return new YOLO_NMS_Plugin();
     }
-    XINFER_API  void destroy_plugin(xinfer::plugin::IInferencePlugin* plugin) {
+    XINFER_API void destroy_plugin(xinfer::plugin::IInferencePlugin* plugin) {
         delete plugin;
     }
 }
