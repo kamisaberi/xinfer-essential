@@ -23,6 +23,6 @@ public:
 };
 
 extern "C" {
-    xinfer::plugin::IInferencePlugin* create_plugin() { return new SpeculativeDecodingPlugin(); }
-    void destroy_plugin(xinfer::plugin::IInferencePlugin* plugin) { delete plugin; }
+    XINFER_API xinfer::plugin::IInferencePlugin* create_plugin() { return new SpeculativeDecodingPlugin(); }
+    XINFER_API void destroy_plugin(xinfer::plugin::IInferencePlugin* plugin) { delete plugin; }
 }
