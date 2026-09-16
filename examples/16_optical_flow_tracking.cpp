@@ -19,12 +19,11 @@ int main() {
             throw std::runtime_error("Failed to load libplugin_optical_flow.so");
         }
 
-        // 3. Direct HTTPS URL from Official ONNX Model Zoo (Replaces local file path)
+        // 3. Official SqueezeNet 1.1 ONNX URL
         std::string model_url = 
             "https://github.com/onnx/models/raw/main/validated/vision/classification/squeezenet/model/squeezenet1.1-7.onnx";
         
         std::cout << "\n[ModelHub] Loading model via HTTPS URL from ONNX Model Zoo..." << std::endl;
-        // ModelHub auto-downloads squeezenet1.1-7.onnx into models/ if missing locally
         engine.load_model(model_url);
 
         // 4. Query Input Tensor Shape: [1, 3, 224, 224]
@@ -63,8 +62,9 @@ int main() {
         xinfer::Tensor tensor_t0("frame_t0", {1, 3, height, width}, xinfer::DataType::Float32, frame_t0.data());
         xinfer::Tensor tensor_t1("frame_t1", {1, 3, height, width}, xinfer::DataType::Float32, frame_t1.data());
         
-        // Tensor to hold the computed optical flow motion displacement map
-        xinfer::Tensor motion_map("motion_map", {1, 3, height, width}, xinfer::DataType::Float32);
+        // FIX: Provide allocated backing memory buffer (motion_buffer.data())
+        std::vector<float> motion_buffer(total_elements, 0.0f);
+        xinfer::Tensor motion_map("motion_map", {1, 3, height, width}, xinfer::DataType::Float32, motion_buffer.data());
 
         // 6. Execute Optical Flow Plugin on Frame T0 (Establishes baseline)
         std::cout << "\n[Stage 1: Optical Flow Plugin] Ingesting Video Frame T0 (Baseline)..." << std::endl;
