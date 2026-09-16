@@ -48,7 +48,7 @@ extern "C" {
     XINFER_API xinfer::plugin::IInferencePlugin* create_plugin() {
         return new RockchipRGA2DResizerPlugin();
     }
-    void destroy_plugin(xinfer::plugin::IInferencePlugin* plugin) {
+    XINFER_API void destroy_plugin(xinfer::plugin::IInferencePlugin* plugin) {
         delete plugin;
     }
 }
