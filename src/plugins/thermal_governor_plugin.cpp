@@ -32,6 +32,6 @@ public:
 };
 
 extern "C" {
-    xinfer::plugin::IInferencePlugin* create_plugin() { return new ThermalGovernorPlugin(); }
-    void destroy_plugin(xinfer::plugin::IInferencePlugin* plugin) { delete plugin; }
+    XINFER_API xinfer::plugin::IInferencePlugin* create_plugin() { return new ThermalGovernorPlugin(); }
+    XINFER_API void destroy_plugin(xinfer::plugin::IInferencePlugin* plugin) { delete plugin; }
 }
