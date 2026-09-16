@@ -344,6 +344,16 @@ if(XINFER_BUILD_EXAMPLES)
     add_executable(demo_classification_pipeline examples/13_classification_topk_pipeline.cpp)
     target_link_libraries(demo_classification_pipeline PRIVATE xinfer::xinfer)
 
+
+    add_executable(demo_mobilenet_pipeline examples/14_mobilenet_quantized_pipeline.cpp)
+    target_link_libraries(demo_mobilenet_pipeline PRIVATE xinfer::xinfer)
+
+    add_executable(demo_squeezenet_pipeline examples/15_squeezenet_pipeline.cpp)
+    target_link_libraries(demo_squeezenet_pipeline PRIVATE xinfer::xinfer)
+
+    add_executable(demo_optical_flow_pipeline examples/16_optical_flow_tracking.cpp)
+    target_link_libraries(demo_optical_flow_pipeline PRIVATE xinfer::xinfer)
+
 endif()
 
 # -------------------------------------------------------------------
