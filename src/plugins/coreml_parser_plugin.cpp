@@ -23,6 +23,6 @@ public:
 };
 
 extern "C" {
-    xinfer::plugin::IInferencePlugin* create_plugin() { return new CoreMLParserPlugin(); }
-    void destroy_plugin(xinfer::plugin::IInferencePlugin* plugin) { delete plugin; }
+    XINFER_API xinfer::plugin::IInferencePlugin* create_plugin() { return new CoreMLParserPlugin(); }
+    XINFER_API void destroy_plugin(xinfer::plugin::IInferencePlugin* plugin) { delete plugin; }
 }
