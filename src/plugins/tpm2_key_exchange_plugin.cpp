@@ -37,10 +37,10 @@ private:
 };
 
 extern "C" {
-    xinfer::plugin::IInferencePlugin* create_plugin() {
+    XINFER_API xinfer::plugin::IInferencePlugin* create_plugin() {
         return new TPM2HardwareKeyExchangePlugin();
     }
-    void destroy_plugin(xinfer::plugin::IInferencePlugin* plugin) {
+    XINFER_API void destroy_plugin(xinfer::plugin::IInferencePlugin* plugin) {
         delete plugin;
     }
 }
