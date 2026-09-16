@@ -18,13 +18,18 @@ public:
         const float* current_frame = input.data<float>();
         float* motion_vectors = output.data<float>();
 
+        // Defensive check: prevent segmentation fault if tensor has no backing buffer
+        if (!current_frame || !motion_vectors) {
+            std::cerr << "[Optical Flow Plugin Warning] Input or output tensor data pointer is null!" << std::endl;
+            return false;
+        }
+
         size_t pixel_count = input.element_count();
-        if (!current_frame || !motion_vectors) return false;
 
         // Calculate motion displacement vectors between consecutive video frames
         if (!prev_frame_.empty() && prev_frame_.size() == pixel_count) {
             for (size_t i = 0; i < pixel_count; ++i) {
-                motion_vectors[i] = current_frame[i] - prev_frame_[i]; // Frame difference motion vector
+                motion_vectors[i] = current_frame[i] - prev_frame_[i];
             }
             std::cout << "[xInfer Plugin: Preproc] Calculated dense optical flow motion vectors across " 
                       << pixel_count << " pixels." << std::endl;
