@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <iomanip>
 #include <xinfer/xinfer.hpp>
 
 int main() {
@@ -9,47 +10,95 @@ int main() {
     std::cout << "==========================================================" << std::endl;
 
     try {
+        // 1. Initialize Engine & Plugin Manager
         xinfer::Engine engine(xinfer::Target::OpenVINO);
         xinfer::plugin::PluginManager plugin_mgr;
 
-        // 1. Load Optical Flow Motion Vector Plugin (.so)
-        plugin_mgr.load_plugin("/usr/local/lib/libplugin_optical_flow.so");
+        // 2. Load Optical Flow Preprocessor Plugin (.so)
+        if (!plugin_mgr.load_plugin("/usr/local/lib/libplugin_optical_flow.so")) {
+            throw std::runtime_error("Failed to load libplugin_optical_flow.so");
+        }
 
-        // 2. Load Threat Model
-        engine.load_model("models/network_threat.onnx");
-
-        const int frame_size = 32; // 32-element flow/motion vector
-        std::vector<float> frame_t0(frame_size, 0.1f);
-        std::vector<float> frame_t1(frame_size, 0.1f);
-
-        // Frame T0: Target stationary at index 5
-        frame_t0[5] = 0.9f;
-
-        // Frame T1: Target moved rapidly to index 25 (simulating fast movement/breach)
-        frame_t1[25] = 0.9f;
-
-        xinfer::Tensor tensor_t0("frame_t0", {1, frame_size}, xinfer::DataType::Float32, frame_t0.data());
-        xinfer::Tensor tensor_t1("frame_t1", {1, frame_size}, xinfer::DataType::Float32, frame_t1.data());
+        // 3. Direct HTTPS URL from Official ONNX Model Zoo (Replaces local file path)
+        std::string model_url = 
+            "https://github.com/onnx/models/raw/main/validated/vision/classification/squeezenet/model/squeezenet1.1-7.onnx";
         
-        xinfer::Tensor motion_vector_output("motion_vector", {1, frame_size}, xinfer::DataType::Float32);
+        std::cout << "\n[ModelHub] Loading model via HTTPS URL from ONNX Model Zoo..." << std::endl;
+        // ModelHub auto-downloads squeezenet1.1-7.onnx into models/ if missing locally
+        engine.load_model(model_url);
 
-        // 3. Run Optical Flow Plugin across Frame T0
-        std::cout << "[Video Stream] Feeding Frame T0 into Optical Flow Accelerator..." << std::endl;
-        plugin_mgr.execute_plugins(xinfer::plugin::PluginType::Preprocessor, tensor_t0, motion_vector_output);
+        // 4. Query Input Tensor Shape: [1, 3, 224, 224]
+        xinfer::Tensor& model_input = engine.get_input_tensor("data");
+        std::cout << "Model Input Tensor Shape : " << model_input.shape_string() << std::endl;
 
-        // 4. Run Optical Flow Plugin across Frame T1 (Motion Vector Calculation)
-        std::cout << "[Video Stream] Feeding Frame T1 into Optical Flow Accelerator..." << std::endl;
-        plugin_mgr.execute_plugins(xinfer::plugin::PluginType::Preprocessor, tensor_t1, motion_vector_output);
+        const int width = 224;
+        const int height = 224;
+        const size_t total_elements = model_input.element_count(); // 1 * 3 * 224 * 224 = 150528
 
-        // 5. Feed Computed Motion Vectors into Threat Inference Engine
-        xinfer::Tensor& model_input = engine.get_input_tensor("input");
-        model_input.copy_from_host(motion_vector_output.data<float>(), model_input.get_size_in_bytes());
+        // 5. Construct Synthetic Consecutive Video Frames (T0 and T1)
+        std::vector<float> frame_t0(total_elements, 0.05f); // Static dark background
+        std::vector<float> frame_t1(total_elements, 0.05f);
 
-        std::cout << "\n[Inference] Evaluating Motion Vector Anomaly Score on OpenVINO..." << std::endl;
+        // Frame T0: Target object stationary at coordinate (30, 30)
+        for (int c = 0; c < 3; ++c) {
+            for (int y = 30; y < 60; ++y) {
+                for (int x = 30; x < 60; ++x) {
+                    size_t idx = c * (width * height) + (y * width + x);
+                    frame_t0[idx] = 0.95f; // Bright target object
+                }
+            }
+        }
+
+        // Frame T1: Target object rapidly displaced to coordinate (130, 130)
+        for (int c = 0; c < 3; ++c) {
+            for (int y = 130; y < 160; ++y) {
+                for (int x = 130; x < 160; ++x) {
+                    size_t idx = c * (width * height) + (y * width + x);
+                    frame_t1[idx] = 0.95f; // Target in new position
+                }
+            }
+        }
+        std::cout << "[Dummy Data] Generated consecutive 224x224 video frames simulating target displacement." << std::endl;
+
+        xinfer::Tensor tensor_t0("frame_t0", {1, 3, height, width}, xinfer::DataType::Float32, frame_t0.data());
+        xinfer::Tensor tensor_t1("frame_t1", {1, 3, height, width}, xinfer::DataType::Float32, frame_t1.data());
+        
+        // Tensor to hold the computed optical flow motion displacement map
+        xinfer::Tensor motion_map("motion_map", {1, 3, height, width}, xinfer::DataType::Float32);
+
+        // 6. Execute Optical Flow Plugin on Frame T0 (Establishes baseline)
+        std::cout << "\n[Stage 1: Optical Flow Plugin] Ingesting Video Frame T0 (Baseline)..." << std::endl;
+        plugin_mgr.execute_plugins(xinfer::plugin::PluginType::Preprocessor, tensor_t0, motion_map);
+
+        // 7. Execute Optical Flow Plugin on Frame T1 (Computes dense pixel displacement)
+        std::cout << "[Stage 1: Optical Flow Plugin] Ingesting Video Frame T1 (Computing Motion Displacement)..." << std::endl;
+        plugin_mgr.execute_plugins(xinfer::plugin::PluginType::Preprocessor, tensor_t1, motion_map);
+
+        // 8. Copy the computed motion map into the model's input buffer
+        model_input.copy_from_host(motion_map.data<float>(), model_input.get_size_in_bytes());
+
+        // 9. Execute Model Inference on OpenVINO
+        std::cout << "\n[Stage 2: Inference Engine] Evaluating Motion Map on OpenVINO..." << std::endl;
         engine.infer();
 
-        xinfer::Tensor& output = engine.get_output_tensor("scores");
-        std::cout << "\n[PASS] Motion Anomaly Score: " << output.data<float>()[0] << std::endl;
+        // 10. Inspect Output Predictions
+        xinfer::Tensor& output = engine.get_output_tensor("squeezenet0_flatten0_reshape0");
+        const float* logits = output.data<float>();
+
+        // Calculate peak motion activation response across output classes
+        float max_activation = 0.0f;
+        for (size_t i = 0; i < output.element_count(); ++i) {
+            if (std::abs(logits[i]) > max_activation) {
+                max_activation = std::abs(logits[i]);
+            }
+        }
+
+        std::cout << "\n----------------------------------------------------------" << std::endl;
+        std::cout << "Pipeline Output:" << std::endl;
+        std::cout << "Target Displaced Across Frames : (30,30) -> (130,130)" << std::endl;
+        std::cout << "Dense Motion Pixels Calculated : " << total_elements / 3 << " pixels" << std::endl;
+        std::cout << "Peak Motion Activation Response: " << std::fixed << std::setprecision(4) << max_activation << std::endl;
+        std::cout << "----------------------------------------------------------" << std::endl;
         std::cout << "==========================================================" << std::endl;
 
     } catch (const std::exception& e) {
