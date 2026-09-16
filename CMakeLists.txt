@@ -363,6 +363,22 @@ if(XINFER_BUILD_EXAMPLES)
     add_executable(demo_segmentation_polygon examples/19_segmentation_polygon_pipeline.cpp)
     target_link_libraries(demo_segmentation_polygon PRIVATE xinfer::xinfer)
 
+
+    add_executable(demo_amp_fallback examples/20_amp_fallback_pipeline.cpp)
+    target_link_libraries(demo_amp_fallback PRIVATE xinfer::xinfer)
+
+    add_executable(demo_paged_attention examples/21_paged_attention_llm_pipeline.cpp)
+    target_link_libraries(demo_paged_attention PRIVATE xinfer::xinfer)
+
+    add_executable(demo_thermal_governor examples/22_thermal_governor_pipeline.cpp)
+    target_link_libraries(demo_thermal_governor PRIVATE xinfer::xinfer)
+
+    add_executable(demo_shm_zero_copy examples/23_shm_zero_copy_pipeline.cpp)
+    target_link_libraries(demo_shm_zero_copy PRIVATE xinfer::xinfer)
+
+    add_executable(demo_watermark_integrity examples/24_watermark_integrity_pipeline.cpp)
+    target_link_libraries(demo_watermark_integrity PRIVATE xinfer::xinfer)
+
 endif()
 
 # -------------------------------------------------------------------
