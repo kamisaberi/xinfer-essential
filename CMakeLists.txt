@@ -250,6 +250,19 @@ if(XINFER_ENABLE_COREML AND APPLE)
 endif()
 
 
+# ----------------------------------------------------
+# BUILD PLUGINS WITH DEFAULT VISIBILITY
+# ----------------------------------------------------
+macro(add_xinfer_plugin PLUGIN_TARGET SOURCE_FILE)
+    add_library(${PLUGIN_TARGET} SHARED ${SOURCE_FILE})
+    target_link_libraries(${PLUGIN_TARGET} PRIVATE xinfer::xinfer)
+    
+    # Force default symbol visibility so dlsym() can locate create_plugin/destroy_plugin
+    set_target_properties(${PLUGIN_TARGET} PROPERTIES
+        CXX_VISIBILITY_PRESET default
+        VISIBILITY_INLINES_HIDDEN 0
+    )
+endmacro()
 
 # ----------------------------------------------------
 # BUILD ALL 30 PLUGINS (.so files)
