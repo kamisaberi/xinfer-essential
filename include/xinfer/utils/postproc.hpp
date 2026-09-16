@@ -1,10 +1,12 @@
 #pragma once
+#include "xinfer/export.hpp"  // <--- REQUIRED FOR SYMBOL EXPORT
+
 #include "preproc.hpp"
 #include <vector>
 
 namespace xinfer::utils {
 
-std::vector<BoundingBox> non_max_suppression(
+XINFER_API std::vector<BoundingBox> non_max_suppression(
     const float* output_data, int num_boxes, int num_classes,
     float conf_threshold = 0.25f, float iou_threshold = 0.45f
 );
