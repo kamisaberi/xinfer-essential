@@ -23,6 +23,6 @@ public:
 };
 
 extern "C" {
-    xinfer::plugin::IInferencePlugin* create_plugin() { return new WatermarkVerifierPlugin(); }
-    void destroy_plugin(xinfer::plugin::IInferencePlugin* plugin) { delete plugin; }
+    XINFER_API xinfer::plugin::IInferencePlugin* create_plugin() { return new WatermarkVerifierPlugin(); }
+    XINFER_API void destroy_plugin(xinfer::plugin::IInferencePlugin* plugin) { delete plugin; }
 }
