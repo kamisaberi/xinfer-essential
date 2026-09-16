@@ -30,7 +30,7 @@ extern "C" {
     XINFER_API xinfer::plugin::IInferencePlugin* create_plugin() {
         return new YOLO_NMS_Plugin();
     }
-    void destroy_plugin(xinfer::plugin::IInferencePlugin* plugin) {
+    XINFER_API  void destroy_plugin(xinfer::plugin::IInferencePlugin* plugin) {
         delete plugin;
     }
 }
