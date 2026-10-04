@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/getting-started/cmake-integration.md`
-
-```markdown
 # CMake Integration
 
 Integrate `xinfer-essential` into external C++ applications using standard CMake patterns.
@@ -81,7 +76,4 @@ Ensure plugins can be found at runtime by setting the dynamic search environment
 export XINFER_PLUGIN_PATH=/usr/local/lib/xinfer-plugins
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 ```
-```
-
----
 
