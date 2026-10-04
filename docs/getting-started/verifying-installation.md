@@ -1,25 +1,113 @@
-# Verifying Installation
 
-> **Status:** Draft — placeholder content. Final technical prose is forthcoming.
+### File: `xinfer-essential/docs/getting-started/verifying-installation.md`
 
+```markdown
+# Verifying Your Installation
 
-Built-in self-tests and sanity checks.
+Validate the installation of `xinfer-essential` using the bundled diagnostics utility (`xinfer-diag`) and self-test harness.
 
-## Self-test binary
+---
 
-xinfer-selftest runs backend probing, tensor round-trips, and a 1000-inference latency histogram.
+## 1. Running the System Diagnostics Utility
 
-## Interpreting results
-
-All checks must print PASS. A backend showing 'absent' means its driver device is missing, not a broken install.
+The `xinfer-diag` tool discovers local acceleration hardware, tests driver permissions, and verifies plugin linkage:
 
 ```bash
-$ xinfer-selftest
-[+] openvino backend .......... READY
-[+] tensor round-trip ......... PASS (0 copies)
-[+] 1000 inferences .......... p50 11.8us p99 14.1us
+xinfer-diag --verbose
+```
+
+### Sample Output
+
+```text
+================================================================================
+                      XINFER SYSTEM HARDWARE DIAGNOSTICS
+================================================================================
+xInfer Version         : 1.0.0 (Release Build)
+Git Commit Hash        : e9a2c31
+Target ABI             : x86_64-linux-gnu-c++20
+Host Linux Kernel      : 6.8.0-31-generic (glibc 2.39)
+DMA-BUF Zero-Copy      : Supported (/dev/dma_heap available)
+
+-------------------------------- DISCOVERED BACKENDS ---------------------------
+ [01] CPU Reference     : Available (AVX-512, Neon: N/A, Threads: 16)
+ [02] Intel OpenVINO    : Available
+      -> Device: NPU.3720 (Intel Core Ultra 7 165H NPU)
+      -> OpenVINO Version: 2024.1.0-15008-f4bb004a43
+ [03] NVIDIA TensorRT   : Unavailable (No active CUDA driver detected)
+ [04] Rockchip RKNN     : Unavailable (Host architecture is not aarch64)
+ [05] Hailo-8 HailoRT   : Unavailable (Device /dev/hailo0 not found)
+
+-------------------------------- MEMORY ARBITRATION ----------------------------
+ Host Pinned Memory    : Functional (Locked Pages Limit: Unlimited)
+ Page Size             : 4096 bytes
+ Cache Line Alignment  : 64 bytes verified
+
+================================================================================
+Status: 2 Backends Ready. Engine verification SUCCESSFUL.
+================================================================================
 ```
 
 ---
 
-*Part of the xinfer-essential documentation set. See mkdocs.yml for navigation.*
+## 2. Testing Memory Locking Limits (`mlock`)
+
+`xinfer-essential` locks physical RAM pages to prevent operating system swapping on edge nodes. If `mlock` limits are too low, you may encounter `ERR_MEMORY_PIN_FAILED` warnings during initialization.
+
+Verify your limits:
+
+```bash
+ulimit -l
+```
+
+If the output is not `unlimited`, update `/etc/security/limits.conf`:
+
+```text
+*    soft    memlock    unlimited
+*    hard    memlock    unlimited
+```
+
+Reload your user session after modifying this file.
+
+---
+
+## 3. Running Unit and Regression Tests
+
+If you compiled `xinfer-essential` with `-DXINFER_BUILD_TESTS=ON`, run the automated GoogleTest regression suite:
+
+```bash
+cd build
+ctest --output-on-failure -V
+```
+
+The test pass covers:
+* Tensor dimension arithmetic and strides.
+* Dynamic plugin loading and error symbol trapping.
+* Cache-aligned allocator boundaries.
+* Synchronous and asynchronous inference execution tracks.
+```
+
+---
+
+### Complete in Part 1
+- `xinfer-essential/docs/mkdocs.yml`
+- `xinfer-essential/docs/index.md`
+- `xinfer-essential/docs/getting-started/overview.md`
+- `xinfer-essential/docs/getting-started/system-requirements.md`
+- `xinfer-essential/docs/getting-started/installation.md`
+- `xinfer-essential/docs/getting-started/cmake-integration.md`
+- `xinfer-essential/docs/getting-started/hello-world.md`
+- `xinfer-essential/docs/getting-started/verifying-installation.md`
+
+---
+
+### Files to be Generated in Part 2
+
+The next phase covers **Deep Systems Design** (`architecture/`):
+
+1. `architecture/core-engine-design.md`
+2. `architecture/zero-copy-model.md`
+3. `architecture/memory-domains.md`
+4. `architecture/thread-safety-concurrency.md`
+5. `architecture/symbol-isolation.md`
+
+Let me know when you are ready to proceed with Part 2.
