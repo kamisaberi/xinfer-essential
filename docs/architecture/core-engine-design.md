@@ -1,12 +1,3 @@
-### Part 2: Deep Systems Design (`architecture/*`)
-
-Here are the 5 architectural specifications detailing the internal mechanics of `xinfer-essential`: state machines, zero-copy memory transport, domain isolation, concurrency primitives, and dynamic linker boundaries.
-
----
-
-### File: `xinfer-essential/docs/architecture/core-engine-design.md`
-
-```markdown
 # Core Engine Design & Execution Pipeline
 
 The core execution pipeline of `xinfer-essential` isolates client orchestration from hardware-specific dispatch. It provides deterministic latency, zero dynamic heap allocations in the critical path, and fault-isolated backend execution.
@@ -129,5 +120,4 @@ If a hardware accelerator crashes (e.g., PCIe timeout, NPU thermal trip, or driv
 1. **Structured Exception Translation:** C-style driver error codes (`cudaError_t`, `rknn_status`, `ze_result_t`) are intercepted at the plugin boundary and rethrown as standard C++20 `xinfer::InferenceException` objects.
 2. **Deterministic Context Cleanup:** Dynamic scratchpad buffers and mapped DMA addresses are released immediately to prevent driver memory leaks.
 3. **Graceful Degraded Fallback:** If configured, the engine dynamically activates the embedded AVX-512/Neon reference CPU backend without terminating the process.
-```
 
