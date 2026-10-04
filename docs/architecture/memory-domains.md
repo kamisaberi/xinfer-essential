@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/architecture/memory-domains.md`
-
-```markdown
 # Memory Domains & Address Space Arbiter
 
 Hardware accelerators operate across distinct address spaces: discrete host RAM, dedicated GPU VRAM, system shared memory, or specialized device scratchpad SRAM. 
@@ -100,5 +95,4 @@ To prevent data corruption without adding execution overhead, `xinfer-essential`
 
 1. **Prior to NPU Execution:** Invokes `DMA_BUF_IOCTL_SYNC` with `DMA_BUF_SYNC_START` and `DMA_BUF_SYNC_WRITE` flags. CPU dirty cache lines are flushed to system RAM.
 2. **Post NPU Execution:** Invokes `DMA_BUF_IOCTL_SYNC` with `DMA_BUF_SYNC_END` and `DMA_BUF_SYNC_READ` flags. Accelerator write lines are invalidated, ensuring CPU reads see current results.
-```
 
