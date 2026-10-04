@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/getting-started/system-requirements.md`
-
-```markdown
 # System Requirements & Prerequisites
 
 Review the toolchain, operating system, and silicon driver requirements before compiling or running `xinfer-essential`.
@@ -82,6 +77,5 @@ To enable target-specific execution backends, ensure the corresponding user-spac
 |  - Storage: 100 GB Enterprise NVMe SSD                                    |
 |  - Throughput: Up to 1,250,000 Inference Ops/Second                      |
 +--------------------------------------------------------------------------+
-```
 ```
 
