@@ -1,7 +1,3 @@
-
-### File: `xinfer-essential/docs/getting-started/verifying-installation.md`
-
-```markdown
 # Verifying Your Installation
 
 Validate the installation of `xinfer-essential` using the bundled diagnostics utility (`xinfer-diag`) and self-test harness.
@@ -84,30 +80,4 @@ The test pass covers:
 * Dynamic plugin loading and error symbol trapping.
 * Cache-aligned allocator boundaries.
 * Synchronous and asynchronous inference execution tracks.
-```
 
----
-
-### Complete in Part 1
-- `xinfer-essential/docs/mkdocs.yml`
-- `xinfer-essential/docs/index.md`
-- `xinfer-essential/docs/getting-started/overview.md`
-- `xinfer-essential/docs/getting-started/system-requirements.md`
-- `xinfer-essential/docs/getting-started/installation.md`
-- `xinfer-essential/docs/getting-started/cmake-integration.md`
-- `xinfer-essential/docs/getting-started/hello-world.md`
-- `xinfer-essential/docs/getting-started/verifying-installation.md`
-
----
-
-### Files to be Generated in Part 2
-
-The next phase covers **Deep Systems Design** (`architecture/`):
-
-1. `architecture/core-engine-design.md`
-2. `architecture/zero-copy-model.md`
-3. `architecture/memory-domains.md`
-4. `architecture/thread-safety-concurrency.md`
-5. `architecture/symbol-isolation.md`
-
-Let me know when you are ready to proceed with Part 2.
