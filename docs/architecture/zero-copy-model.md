@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/architecture/zero-copy-model.md`
-
-```markdown
 # Zero-Copy Memory Model
 
 In high-throughput edge systems, memory copying over the system bus introduces latency spikes and consumes power. Passing a 1080p camera buffer or raw network packets through user-space and kernel boundaries degrades inference throughput. 
@@ -121,5 +116,4 @@ Empirical benchmarks running a 32-dimensional NetFlow feature vector batch ($N=1
 | **Standard `memcpy`** | 131 KB | $8.45\,\mu\text{s}$ | $22.10\,\mu\text{s}$ | 14.8% |
 | **Host-Pinned (xInfer)** | 131 KB | $1.10\,\mu\text{s}$ | $14.75\,\mu\text{s}$ | 3.2% |
 | **Direct DMA-BUF (xInfer)**| 131 KB | **$0.00\,\mu\text{s}$** | **$11.38\,\mu\text{s}$** | **0.1%** |
-```
 
