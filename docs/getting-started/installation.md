@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/getting-started/installation.md`
-
-```markdown
 # Building & Installing `xinfer-essential`
 
 This guide covers building the core runtime library (`libxinfer.so`), its configuration tools, and the backend hardware plugins from source.
@@ -125,6 +120,5 @@ sudo ldconfig
 │       └── libxinfer_tensorrt.so
 └── bin/
     └── xinfer-diag
-```
 ```
 
