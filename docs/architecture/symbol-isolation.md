@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/architecture/symbol-isolation.md`
-
-```markdown
 # Symbol Isolation & Dynamic Linker Boundaries
 
 Edge security appliances often link against complex, conflicting software stacks: varying versions of OpenSSL, Protobuf, gRPC, Level Zero, or CUDA runtimes. Unrestricted symbol visibility across shared library boundaries leads to One Definition Rule (ODR) violations, symbol collision, and difficult-to-diagnose runtime crashes.
@@ -117,27 +112,4 @@ The output should contain only `xinfer::` names explicitly marked with `XINFER_A
 ```
 
 Internal framework symbols, vendor dependencies, and utility routines must not appear in the dynamic symbol table.
-```
 
----
-
-### Complete in Part 2
-- `xinfer-essential/docs/architecture/core-engine-design.md`
-- `xinfer-essential/docs/architecture/zero-copy-model.md`
-- `xinfer-essential/docs/architecture/memory-domains.md`
-- `xinfer-essential/docs/architecture/thread-safety-concurrency.md`
-- `xinfer-essential/docs/architecture/symbol-isolation.md`
-
----
-
-### Files to be Generated in Part 3
-
-The next phase covers **Silicon Backends** (`silicon-backends/`). Because there are 16 hardware guides in total, Part 3 will deliver the first batch (the matrix overview and the primary edge backends):
-
-1. `silicon-backends/index.md` (Master compatibility matrix, feature flags, driver hooks)
-2. `silicon-backends/nvidia-tensorrt.md` (CUDA Streams, `.engine` deserialization, FP16/INT8)
-3. `silicon-backends/intel-openvino.md` (Core Ultra NPU, Xeon, iGPU, Level Zero)
-4. `silicon-backends/rockchip-rknn.md` (RK3588, RKNPU2, DRM IOCTL zero-copy)
-5. `silicon-backends/qualcomm-qnn.md` (Snapdragon X Elite, Hexagon DSP, FastRPC)
-
-Let me know when you are ready to proceed with Part 3.
