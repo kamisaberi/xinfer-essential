@@ -1,6 +1,3 @@
-### File: `xinfer-essential/docs/getting-started/hello-world.md`
-
-```markdown
 # 5-Minute "Hello World" Quickstart
 
 This walkthrough guides you through setting up a minimal C++20 program that loads an ONNX classification model, allocates a zero-copy input buffer, and executes a forward inference pass.
@@ -117,6 +114,3 @@ Ensure a valid model exists at `models/minimal_classifier.onnx`, then execute th
   Class [1]: 0.998759
 [xInfer] Teardown complete.
 ```
-```
-
----
