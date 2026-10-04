@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/getting-started/overview.md`
-
-```markdown
 # High-Level Runtime Capabilities & Design Principles
 
 `xinfer-essential` delivers a consistent C++20 execution abstraction over diverse hardware acceleration drivers. It is designed for low-latency operational environments that cannot absorb the memory overhead, garbage collection pauses, or dynamic allocation behavior of general-purpose runtimes.
