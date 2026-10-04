@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/architecture/thread-safety-concurrency.md`
-
-```markdown
 # Thread Safety, Concurrency & Re-Entrancy
 
 `xinfer-essential` is designed for high-concurrency environments, such as multi-threaded network engines and distributed security daemons. It avoids global locks in favor of re-entrant execution contexts and lock-free rings.
@@ -110,5 +105,4 @@ To maintain sustained throughput ($> 1,250,000\text{ EPS}$), `xinfer-essential` 
 
 * **Zero Memory Footprint Expansion:** Workers process events sequentially within their pre-allocated tensor memory regions.
 * **Cache-Padded Ring Indices:** Producer and consumer heads are isolated on distinct 64-byte cache lines to eliminate CPU cache invalidation loops (false sharing).
-```
 
