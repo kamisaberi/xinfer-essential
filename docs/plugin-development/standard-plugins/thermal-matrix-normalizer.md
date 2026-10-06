@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/plugin-development/standard-plugins/thermal-matrix-normalizer.md`
-
-```markdown
 # Thermal Matrix Normalizer Plugin (`libxinfer_plugin_thermal.so`)
 
 The Thermal Matrix Normalizer plugin converts 14-bit and 16-bit raw radiometric pixel streams (from FLIR Lepton, SEEK Thermal, or Hikmicro sensors) into normalized float tensors ready for overheating autoencoders and fire-detection models.
@@ -66,5 +61,4 @@ void normalize_radiometric_matrix(
 
 * **Dead Pixel Substitution:** Bad pixels ($DN = 0x0000$ or $DN = 0xFFFF$) are dynamically interpolated using a $3\times3$ kernel.
 * **Throughput:** Sustained processing $> 250\text{ FPS}$ on a single core for $160\times120$ Lepton 3.5 sensors ($< 8\,\mu\text{s}$ per frame).
-```
 

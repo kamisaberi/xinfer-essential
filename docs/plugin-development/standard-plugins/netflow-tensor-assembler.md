@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/plugin-development/standard-plugins/netflow-tensor-assembler.md`
-
-```markdown
 # NetFlow Tensor Assembler Plugin (`libxinfer_plugin_netflow.so`)
 
 The NetFlow Tensor Assembler plugin constructs normalized 32-dimensional feature tensors directly from raw IP/TCP/UDP packet headers and sliding-window flow statistics. This forms the operational input vector for the Tier 2/Tier 3 detection engines in the Blackbox Sentinel ecosystem.
@@ -106,5 +101,4 @@ void assemble_netflow_tensor(const RawFlowRecord& rec, std::span<float, 32> out_
 
 * **Assembly Latency:** $< 0.45\,\mu\text{s}$ per record.
 * **Zero Copy:** Operates directly on reference inputs without allocating intermediate records.
-```
 

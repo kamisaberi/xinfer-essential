@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/plugin-development/standard-plugins/ultraface-detector.md`
-
-```markdown
 # UltraFace Landmark Detector Plugin (`libxinfer_plugin_ultraface.so`)
 
 The UltraFace Detector plugin wraps lightweight edge face-detection models. It handles anchor grid generation, bounding box regression un-scaling, and 5-point facial landmark decoding (eyes, nose, mouth corners) in real-time camera pipelines.
@@ -115,5 +110,4 @@ void decode_ultraface(
 
 * **Decoding Latency:** $< 45\,\mu\text{s}$ (320x240 frame resolution, 4420 anchors).
 * **Anchor Storage:** Static, evaluated once during initialization.
-```
 

@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/plugin-development/standard-plugins/nvdec-video-unpacker.md`
-
-```markdown
 # NVDEC Video Unpacker Plugin (`libxinfer_plugin_nvdec.so`)
 
 The NVDEC Video Unpacker plugin leverages NVIDIA’s dedicated silicon hardware video decoder (NVDEC) to ingest compressed H.264, HEVC (H.265), and AV1 RTSP video streams, outputting decoded frames directly into CUDA device memory without host CPU involvement.
@@ -81,5 +76,4 @@ public:
 | :--- | :--- | :--- | :--- | :--- |
 | **1080p (1920x1080)** | H.264 (Baseline) | $0.85\,\text{ms}$ | $0.12\,\text{ms}$ | **$< 0.98\,\text{ms}$** |
 | **4K (3840x2160)**    | HEVC Main 10 | $1.95\,\text{ms}$ | $0.35\,\text{ms}$ | **$< 2.30\,\text{ms}$** |
-```
 

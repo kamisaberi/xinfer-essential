@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/plugin-development/standard-plugins/modbus-apdu-vectorizer.md`
-
-```markdown
 # Modbus APDU Vectorizer Plugin (`libxinfer_plugin_modbus.so`)
 
 The Modbus APDU Vectorizer plugin parses raw industrial Application Protocol Data Units (APDU) from Modbus TCP packets (port 502) and maps register mutations, coil writes, and function codes into normalized tensors for industrial SCADA anomaly detection.
@@ -99,5 +94,4 @@ void vectorize_modbus_apdu(
 
 * Detects unauthorized Function Code `0x08` (Diagnostics) or `0x2B` (Encapsulated Interface Transport).
 * Identifies out-of-range register write values indicative of malicious PLC set-point override attacks (e.g., Stuxnet, Triton).
-```
 

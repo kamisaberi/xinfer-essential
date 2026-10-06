@@ -1,12 +1,3 @@
-### Part 8: Standard Pre-Built Plugins (`plugin-development/standard-plugins/*`)
-
-This section contains complete documentation and reference implementations for the 9 pre-built standard plugins included with `xinfer-essential`: vision, video decoding, facial landmark analysis, radiometric infrared, acoustic FFT analysis, cyber-physical NetFlow, SCADA Modbus, medical PACS, and cryptographic weight unbundling.
-
----
-
-### File: `xinfer-essential/docs/plugin-development/standard-plugins/yolo-nms-decoder.md`
-
-```markdown
 # YOLO NMS Decoder Plugin (`libxinfer_plugin_yolo_nms.so`)
 
 The YOLO NMS Decoder plugin performs accelerated Non-Maximum Suppression (NMS) and coordinate un-scaling directly on raw output tensors produced by modern object detection networks (YOLOv8, YOLOv9, YOLOv10, and YOLOv11).
@@ -173,5 +164,4 @@ void decode_yolo_boxes(
 
 * **Execution Overhead:** $< 140\,\mu\text{s}$ per 8400-anchor grid on Intel Core Ultra 7 (AVX-512 enabled).
 * **Heap Allocations in Loop:** 0 (pre-allocated vector reservations).
-```
 

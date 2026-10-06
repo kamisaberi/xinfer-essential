@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/plugin-development/standard-plugins/mel-spectrogram-fft.md`
-
-```markdown
 # Mel-Spectrogram FFT Plugin (`libxinfer_plugin_melspec.so`)
 
 The Mel-Spectrogram FFT plugin converts continuous 1D acoustic sensor signals (microphone arrays, piezoelectric vibration sensors) into 2D time-frequency spectrogram tensors for industrial predictive maintenance and acoustic anomaly detection.
@@ -78,5 +73,4 @@ private:
 * **Pre-Computed Filterbanks:** Triangular Mel-filter matrices are calculated during plugin construction.
 * **Heap Stability:** Audio frame buffers reuse pre-allocated FFT arrays.
 * **Latency Profile:** $< 380\,\mu\text{s}$ for a 1-second continuous audio segment (16,000 samples).
-```
 

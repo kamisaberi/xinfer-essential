@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/plugin-development/standard-plugins/aes-weight-decryption.md`
-
-```markdown
 # AES Weight Decryption Plugin (`libxinfer_plugin_crypto.so`)
 
 The AES Weight Decryption plugin unbundles encrypted neural network weight files (`.onnx.enc`, `.engine.enc`, `.rknn.enc`) directly in memory on boot. Decrypted weights are staged into locked, host-pinned RAM pages without ever writing plaintext weights to persistent storage.
@@ -90,33 +85,3 @@ void decrypt_weights_in_memory(
 
 * **Anti-Forensics:** Memory pages containing decrypted weights are configured with `madvise(..., MADV_DONTDUMP)` to ensure plaintext parameters cannot be extracted from Linux core dumps.
 * **Integrity Guarantee:** Any single-bit corruption or unauthorized tampering with the encrypted model weights immediately aborts startup with an authentication failure.
-```
-
----
-
-### Complete in Part 8
-- `xinfer-essential/docs/plugin-development/standard-plugins/yolo-nms-decoder.md`
-- `xinfer-essential/docs/plugin-development/standard-plugins/nvdec-video-unpacker.md`
-- `xinfer-essential/docs/plugin-development/standard-plugins/ultraface-detector.md`
-- `xinfer-essential/docs/plugin-development/standard-plugins/thermal-matrix-normalizer.md`
-- `xinfer-essential/docs/plugin-development/standard-plugins/mel-spectrogram-fft.md`
-- `xinfer-essential/docs/plugin-development/standard-plugins/netflow-tensor-assembler.md`
-- `xinfer-essential/docs/plugin-development/standard-plugins/modbus-apdu-vectorizer.md`
-- `xinfer-essential/docs/plugin-development/standard-plugins/dicom-pacs-normalizer.md`
-- `xinfer-essential/docs/plugin-development/standard-plugins/aes-weight-decryption.md`
-
-All 9 pre-built standard plugins are now documented.
-
----
-
-### Files to be Generated in Part 9
-
-The next phase covers the **Model Hub** subsystem (`model-hub/`):
-
-1. `model-hub/modelhub-architecture.md` (Resolution pipeline: Memory $\to$ Local $\to$ HTTPS)
-2. `model-hub/https-caching-rules.md` (Cache synchronization and TTL invalidation)
-3. `model-hub/cryptographic-verification.md` (Pre-execution SHA-256 validation)
-4. `model-hub/air-gapped-offline-mode.md` (Pre-seeding models for classified environments)
-5. `model-hub/supported-model-formats.md` (ONNX Opset 11–17, OpenVINO IR, RKNN, TensorRT)
-
-Let me know when you are ready to proceed with Part 9.

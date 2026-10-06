@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/plugin-development/standard-plugins/dicom-pacs-normalizer.md`
-
-```markdown
 # DICOM PACS Normalizer Plugin (`libxinfer_plugin_dicom.so`)
 
 The DICOM PACS Normalizer plugin converts 16-bit medical radiological imagery (CT, MRI, X-ray) into normalized floating-point tensors. It applies Hounsfield Unit (HU) windowing and leveling, rescale slope/intercept transformations, and photometric un-inversion.
@@ -73,5 +68,4 @@ void normalize_dicom_slice(
 
 * **Zero Dynamic Allocations:** Processes directly into pre-allocated model input tensors.
 * **Latency Profile:** $< 1.1\,\text{ms}$ for a full $512\times512$ 16-bit CT slice on Intel Xeon processors with AVX-512.
-```
 
