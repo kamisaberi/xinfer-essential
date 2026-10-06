@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/benchmarking/power-efficiency-joules.md`
-
-```markdown
 # Power Efficiency & Performance-per-Watt Profiling
 
 For battery-backed field hardware, aerial drones (MAVLink), and edge IoT nodes, power consumption is a key deployment constraint. Measuring inference performance strictly by operations-per-second ignores thermal and electrical budgets.
@@ -48,30 +43,4 @@ Workload: **32-dimensional Tabular Threat Autoencoder** ($N=1$, Sustained Satura
 
 1. **Edge NPUs Dominate Energy Efficiency:** Dedicated NPU architectures (Rockchip RKNPU and Hailo-8) deliver up to **$46{,}600\text{ inferences per Joule}$**, consuming less than $1/10\text{th}$ the energy of server CPUs for tabular edge scoring.
 2. **Thermal Stability on Fanless Nodes:** Operating under $25\,\mu\text{J}$ per inference allows appliances to run at peak throughput without thermal throttling in sealed, fanless enclosures.
-```
 
----
-
-### Complete in Part 12
-- `xinfer-essential/docs/benchmarking/methodology.md`
-- `xinfer-essential/docs/benchmarking/bare-metal-results.md`
-- `xinfer-essential/docs/benchmarking/comparative-studies.md`
-- `xinfer-essential/docs/benchmarking/memory-profiling.md`
-- `xinfer-essential/docs/benchmarking/power-efficiency-joules.md`
-
-All 5 Benchmarking documentation files are now generated.
-
----
-
-### Files to be Generated in Part 13
-
-The final phase covers **Troubleshooting & Help Desk** (`troubleshooting/`), completing the entire documentation tree:
-
-1. `troubleshooting/common-build-errors.md` (Missing compilers, CMake mismatches, missing drivers)
-2. `troubleshooting/linker-symbol-conflicts.md` (Debugging dynamic library collisions and undefined symbols)
-3. `troubleshooting/backend-initialization-failures.md` (Resolving driver issues: `/dev/rknpu`, CUDA init, NPU busy)
-4. `troubleshooting/out-of-memory-diagnostics.md` (Diagnosing IOMMU, DMA allocation, and swap exhaustion)
-5. `troubleshooting/faq.md` (Technical Frequently Asked Questions)
-6. `troubleshooting/support.md` (GitHub issues, enterprise support SLAs, and reporting bugs)
-
-Let me know when you are ready to proceed with Part 13.

@@ -1,12 +1,3 @@
-### Part 12: Benchmarking & Performance Profiling (`benchmarking/*`)
-
-This section provides the rigorous benchmarking standards, empirical bare-metal results, comparative frameworks analysis, memory profiling procedures, and energy-per-inference metrics for `xinfer-essential`.
-
----
-
-### File: `xinfer-essential/docs/benchmarking/methodology.md`
-
-```markdown
 # Benchmarking Methodology & Microsecond Profiling Standards
 
 Accurately evaluating microsecond and sub-microsecond AI inference runtimes requires hardware-level timing rigor. Standard operating system utilities and unpinned user-space timers introduce measurement jitter due to CPU frequency transitions, kernel context switching, and timer syscall overhead.
@@ -93,6 +84,5 @@ echo 0 | sudo tee /sys/devices/system/cpu/cpufreq/boost         # AMD
 
 # 3. Pin benchmark executable to shielded core 2
 sudo taskset -c 2 ./xinfer_benchmark_harness
-```
 ```
 

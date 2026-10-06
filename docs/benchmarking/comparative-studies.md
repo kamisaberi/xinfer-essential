@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/benchmarking/comparative-studies.md`
-
-```markdown
 # Comparative Studies: xInfer vs. Industry Frameworks
 
 To evaluate the architectural efficiency of `xinfer-essential`, we benchmarked the engine against three widely adopted industry runtimes: **ONNX Runtime (Microsoft)**, **LibTorch (Meta/PyTorch Foundation)**, and **Native Intel OpenVINO / NVIDIA TensorRT standalone**.
@@ -52,5 +47,4 @@ Generic runtimes often allocate small dynamic objects (such as metadata descript
 | **LibTorch C++** | $\sim 210\,\text{MB}$ | $> 120{,}000$ | Protobuf, BLAS, OpenMP, Python ABI |
 | **ONNX Runtime** | $\sim 38\,\text{MB}$ | $> 15{,}000$ | Protobuf, Flatbuffers, Re2 |
 | **xInfer-Essential**| **$< 4.2\,\text{MB}$** | **$< 25$ (`XINFER_API`)** | **None (Decoupled dynamic plugins)** |
-```
 

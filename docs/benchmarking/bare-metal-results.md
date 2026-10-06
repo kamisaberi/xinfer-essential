@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/benchmarking/bare-metal-results.md`
-
-```markdown
 # Empirical Bare-Metal Benchmark Results
 
 This document presents empirical latency and throughput metrics measured across production edge appliances, industrial embedded SoCs, and enterprise server hardware running `xinfer-essential`.
@@ -46,5 +41,4 @@ $$\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (t_i - \mu)^2}$$
 
 * **xInfer on Intel Core Ultra NPU:** $\sigma = 0.42\,\mu\text{s}$ (Extremely flat distribution; zero paging traps).
 * **xInfer on Xeon AVX-512:** $\sigma = 0.08\,\mu\text{s}$ (Deterministic cache residency).
-```
 

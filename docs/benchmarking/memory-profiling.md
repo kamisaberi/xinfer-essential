@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/benchmarking/memory-profiling.md`
-
-```markdown
 # Memory Profiling & Heap Churn Diagnostics
 
 In real-time cyber-physical systems, memory leaks and heap fragmentation cause application degradation over time. Edge security appliances must run continuously for months without experiencing memory footprint expansion.
@@ -87,5 +82,4 @@ ms_print massif.out
 ```
 
 The resulting Massif profile confirms that the heap allocation graph remains flat throughout the entire post-initialization execution window.
-```
 
