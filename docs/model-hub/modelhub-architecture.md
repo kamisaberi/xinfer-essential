@@ -1,12 +1,3 @@
-### Part 9: Model Resolution & Cryptographic Caching (`model-hub/*`)
-
-This section details the `xinfer::ModelHub` subsystem: multi-tier resolution architecture, HTTPS cache invalidation mechanics, pre-execution cryptographic integrity verification, air-gapped offline operation, and the supported model serialization formats.
-
----
-
-### File: `xinfer-essential/docs/model-hub/modelhub-architecture.md`
-
-```markdown
 # ModelHub Architecture & Dynamic Resolution Pipeline
 
 The `xinfer::ModelHub` subsystem decouples high-level model requests from physical storage locations. It resolves model targets through a three-tier fallback hierarchy designed to guarantee deterministic execution on edge appliances while supporting remote fleet updates.
@@ -108,5 +99,4 @@ To ensure worker threads never read partially written or corrupt models during l
 2. Full SHA-256 checksum verification occurs across the temporary file.
 3. Upon cryptographic validation, the engine performs an atomic POSIX `rename()` syscall to the target destination (`model.bin`).
 4. Read operations acquire a shared lock (`std::shared_lock`), preventing cache pruning threads from unlinking models actively in use.
-```
 

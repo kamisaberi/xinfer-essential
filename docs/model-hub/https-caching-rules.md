@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/model-hub/https-caching-rules.md`
-
-```markdown
 # HTTPS Remote Caching & Synchronization Rules
 
 When connected to a central command plane (such as `sentinel-nexus`), `xinfer::ModelHub` provides automated model synchronization over HTTPS/TLS 1.3 while enforcing rate limits and byte-level validation.
@@ -101,6 +96,5 @@ void ModelHub::prune_disk_cache(size_t max_bytes_allowed) {
         }
     }
 }
-```
 ```
 

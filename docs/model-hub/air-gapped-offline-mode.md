@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/model-hub/air-gapped-offline-mode.md`
-
-```markdown
 # Air-Gapped & Offline Deployment Mode
 
 In sovereign defense networks, energy grids, and air-gapped industrial control systems (ICS), edge devices operate with zero Internet connectivity and $\$0.00$ cloud data egress.
@@ -95,5 +90,4 @@ strace -f -e trace=network ./hello_xinfer
 ```
 
 If `offline_mode` is properly configured, no calls to `socket()`, `connect()`, or `sendto()` will occur.
-```
 

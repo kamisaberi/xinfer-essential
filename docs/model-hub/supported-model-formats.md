@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/model-hub/supported-model-formats.md`
-
-```markdown
 # Supported Model Serialization Formats
 
 `xinfer-essential` accepts a wide range of model formats, mapping each directly to its optimal silicon execution backend.
@@ -53,32 +48,3 @@ void inspect_model_metadata(xinfer::InferenceEngine& engine) {
     }
 }
 ```
-```
-
----
-
-### Complete in Part 9
-- `xinfer-essential/docs/model-hub/modelhub-architecture.md`
-- `xinfer-essential/docs/model-hub/https-caching-rules.md`
-- `xinfer-essential/docs/model-hub/cryptographic-verification.md`
-- `xinfer-essential/docs/model-hub/air-gapped-offline-mode.md`
-- `xinfer-essential/docs/model-hub/supported-model-formats.md`
-
-All 5 Model Hub documentation files are now generated.
-
----
-
-### Files to be Generated in Part 10
-
-The next phase covers the complete **C++20 API Reference** (`api-reference/`):
-
-1. `api-reference/index.md` (Namespace overview & architectural invariants)
-2. `api-reference/inference-engine.md` (Class `xinfer::InferenceEngine`)
-3. `api-reference/tensor.md` (Class `xinfer::Tensor` & `TensorDescriptor`)
-4. `api-reference/model-hub.md` (Class `xinfer::ModelHub`)
-5. `api-reference/plugin-manager.md` (Class `xinfer::PluginManager`)
-6. `api-reference/engine-config.md` (Struct `xinfer::EngineConfig`)
-7. `api-reference/data-types.md` (Enums `DataType`, `Precision`, `BackendType`, `MemoryType`)
-8. `api-reference/error-handling.md` (Class `xinfer::InferenceException` & `ErrorCode`)
-
-Let me know when you are ready to proceed with Part 10.

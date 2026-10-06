@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/model-hub/cryptographic-verification.md`
-
-```markdown
 # Pre-Execution Cryptographic Integrity Enforcement
 
 Untrusted or corrupted neural network weights present a direct threat to critical infrastructure. Adversarial weight manipulation can introduce stealth backdoors or induce denial-of-service conditions.
@@ -125,6 +120,5 @@ Models bundled as a collection can be deployed with an accompanying `manifest.sh
 ```text
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  network_threat_v2.onnx
 872983acbe44816c21e69da8a07c126d41829e23c1d8961726a57c2a713912da  yolov8s_industrial.engine
-```
 ```
 
