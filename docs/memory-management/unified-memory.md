@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/memory-management/unified-memory.md`
-
-```markdown
 # Unified Virtual Address Spaces on Heterogeneous SoCs
 
 Integrated Systems-on-Chip (SoCs)—such as the **Apple Silicon M-series, Rockchip RK3588, and Intel Lunar Lake**—share physical LPDDR5/DDR5 system memory across the host CPU, GPU, and Neural Processing Unit (NPU). 
@@ -102,6 +97,5 @@ void* allocate_unified_soc_buffer(size_t size_bytes) {
     ::madvise(ptr, size_bytes, MADV_WILLNEED);
     return ptr;
 }
-```
 ```
 

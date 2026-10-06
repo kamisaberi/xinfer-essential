@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/memory-management/tensor-backing-buffers.md`
-
-```markdown
 # Tensor Backing Buffers & Persistent Allocation Pools
 
 Invoking dynamic heap memory allocations (`malloc`, `free`, `new`, `delete`) during runtime inference introduces thread contention, memory fragmentation, and latency variability.
@@ -122,6 +117,5 @@ while (is_running) {
     // Flip buffer toggle
     toggle = !toggle;
 }
-```
 ```
 

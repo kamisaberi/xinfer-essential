@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/memory-management/host-pinned-memory.md`
-
-```markdown
 # Allocating Non-Pageable Memory (`mlock` & `cudaHostRegister`)
 
 Standard memory allocated via `malloc()` or `new` consists of virtual memory addresses backed by demand-paged anonymous pages. The Linux virtual memory manager (VMM) may swap these pages to disk under memory pressure or relocate them during page compaction, introducing non-deterministic latency spikes during real-time threat mitigation.
@@ -139,6 +134,5 @@ void register_cuda_pinned_memory(void* host_ptr, size_t size_bytes) {
     }
 }
 #endif
-```
 ```
 

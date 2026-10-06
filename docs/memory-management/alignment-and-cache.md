@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/memory-management/alignment-and-cache.md`
-
-```markdown
 # 64-Byte Cache Alignment & TLB Optimization
 
 Modern CPU and NPU architectures rely heavily on SIMD vector units (AVX-512, AVX2, ARM Neon) and multi-level data caches. Misaligned memory addresses cross cache line boundaries, causing split-cache access penalties and serialization delays.
@@ -122,30 +117,3 @@ To configure 512 HugePages (1 GB of pooled physical memory) dynamically:
 ```bash
 echo 512 | sudo tee /proc/sys/vm/nr_hugepages
 ```
-```
-
----
-
-### Complete in Part 6
-- `xinfer-essential/docs/memory-management/dma-buf-integration.md`
-- `xinfer-essential/docs/memory-management/host-pinned-memory.md`
-- `xinfer-essential/docs/memory-management/unified-memory.md`
-- `xinfer-essential/docs/memory-management/tensor-backing-buffers.md`
-- `xinfer-essential/docs/memory-management/alignment-and-cache.md`
-
-All memory management documentation is now in place.
-
----
-
-### Files to be Generated in Part 7
-
-The next phase covers **Plugin Development** (`plugin-development/`):
-
-1. `plugin-development/plugin-architecture.md` (Dynamic linker mechanics, `dlopen`, `RTLD_LAZY | RTLD_LOCAL`)
-2. `plugin-development/iinference-plugin-interface.md` (The C++20 `IInferencePlugin` ABI contract)
-3. `plugin-development/building-custom-plugins.md` (Writing, compiling, and testing a custom plugin)
-4. `plugin-development/plugin-lifecycle.md` (Registration, validation, execution, and teardown states)
-
-*(The 9 pre-built standard plugins under `plugin-development/standard-plugins/` will follow in Part 8).*
-
-Let me know when you are ready to proceed with Part 7.

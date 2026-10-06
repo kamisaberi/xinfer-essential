@@ -1,12 +1,3 @@
-### Part 6: Zero-Copy & Low-Level Memory Management (`memory-management/*`)
-
-This section contains implementation guides for low-level memory subsystems in `xinfer-essential`: Linux kernel DMA-BUF descriptors, physical page locking, unified memory architectures, persistent tensor pools, and cache-line alignment optimizations.
-
----
-
-### File: `xinfer-essential/docs/memory-management/dma-buf-integration.md`
-
-```markdown
 # Direct Mapping of Linux Kernel DMA-BUF Descriptors
 
 In high-frequency cyber-physical systems, transferring network packets or camera sensor data across PCIe and system memory buses using standard `read()`, `write()`, or `memcpy()` primitives degrades performance. `xinfer-essential` integrates with the Linux kernel **DMA-BUF** and **DMA-Heap** subsystems to map physical memory directly into accelerator hardware MMUs.
@@ -159,6 +150,5 @@ auto tensor = xinfer::Tensor::create_from_dmabuf(desc, dma_fd, 1024 * 1024);
 // 4. Bind directly to inference input port
 engine.bind_input("flow_vector", tensor);
 engine.forward();
-```
 ```
 
