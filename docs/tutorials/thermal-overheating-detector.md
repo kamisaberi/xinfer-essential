@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/tutorials/thermal-overheating-detector.md`
-
-```markdown
 # Real-Time Industrial Equipment Thermal Overheating Monitoring
 
 This tutorial demonstrates how to ingest raw 16-bit radiometric thermal camera data (from FLIR Lepton or SEEK Thermal sensors), normalize pixel matrices into temperature-scaled tensors, and evaluate equipment thermal profiles to detect impending equipment failures and thermal runaway.
@@ -129,6 +124,5 @@ clang++-16 -std=c++20 thermal_guard.cpp -o thermal_guard \
     -Wl,-rpath,/usr/local/lib
 
 ./thermal_guard
-```
 ```
 

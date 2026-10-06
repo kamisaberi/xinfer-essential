@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/tutorials/realtime-yolo-edge-vision.md`
-
-```markdown
 # Real-Time 30 FPS Camera Vision on Rockchip RK3588 & Jetson
 
 This tutorial walks through building a zero-copy video inference pipeline that captures frames from a camera or RTSP stream, feeds them to a hardware accelerator (Rockchip RKNN or NVIDIA TensorRT), and parses detections using the built-in YOLO NMS decoder plugin.
@@ -140,6 +135,5 @@ g++ -std=c++20 -O3 camera_yolo.cpp -o camera_yolo \
 [+] Bound Backend: Rockchip_RKNN_NPU (Tri-Core)
 [Frame 300] Compute Latency: 12.3 ms | Detections: 4
 [+] Video stream processing finished successfully.
-```
 ```
 

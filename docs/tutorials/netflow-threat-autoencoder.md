@@ -1,12 +1,3 @@
-### Part 11: End-to-End Tutorials (`tutorials/*`)
-
-This section contains 5 practical, end-to-end tutorials demonstrating how to build, compile, and run real-world inference pipelines with `xinfer-essential`: sub-12-microsecond NetFlow scoring, 30 FPS camera vision on RK3588/Jetson, inline SCADA Modbus inspection, industrial thermal monitoring, and dual-model shadow execution.
-
----
-
-### File: `xinfer-essential/docs/tutorials/netflow-threat-autoencoder.md`
-
-```markdown
 # NetFlow Anomaly Scoring in Under 12 Microseconds
 
 This tutorial demonstrates how to load a 32-dimensional tabular threat autoencoder (`network_threat_v2.onnx`), bind a host-pinned zero-copy input buffer, execute forward inference in under $12\,\mu\text{s}$, and calculate Mean Squared Error (MSE) reconstruction loss to detect network anomalies.
@@ -129,6 +120,5 @@ clang++-16 -std=c++20 -O3 netflow_eval.cpp -o netflow_eval \
 [+] Inference Latency : 11.2 us
 [+] Reconstruction MSE: 0.28419
 [!] THREAT DETECTED: Reconstruction error exceeds baseline threshold (0.082) -> TRIGGER EBPF BLOCK
-```
 ```
 

@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/tutorials/dual-model-shadow-execution.md`
-
-```markdown
 # Running Production and Candidate Models in Parallel (Shadow Execution)
 
 In critical production networks, deploying an unverified AI model directly into the active packet-dropping path presents operational risks. 
@@ -104,29 +99,3 @@ int main() {
 
 * **Zero Fast-Path Degradation:** Production packet mitigation latency remains unaffected by the candidate model's compute time.
 * **Deterministic Canary Testing:** Candidate models can be evaluated against live wire traffic for weeks before promoting weights to active mitigation status.
-```
-
----
-
-### Complete in Part 11
-- `xinfer-essential/docs/tutorials/netflow-threat-autoencoder.md`
-- `xinfer-essential/docs/tutorials/realtime-yolo-edge-vision.md`
-- `xinfer-essential/docs/tutorials/scada-modbus-anomaly-detection.md`
-- `xinfer-essential/docs/tutorials/thermal-overheating-detector.md`
-- `xinfer-essential/docs/tutorials/dual-model-shadow-execution.md`
-
-All 5 practical tutorials are now generated.
-
----
-
-### Files to be Generated in Part 12
-
-The next phase covers **Benchmarking & Performance Profiling** (`benchmarking/`):
-
-1. `benchmarking/methodology.md` (Microsecond hardware timer standards, RDTSC, CLOCK_MONOTONIC_RAW)
-2. `benchmarking/bare-metal-results.md` (Empirical results on Intel Xeon, Core Ultra, and Jetson)
-3. `benchmarking/comparative-studies.md` (xInfer vs. ONNX Runtime vs. LibTorch vs. OpenVINO Native)
-4. `benchmarking/memory-profiling.md` (Measuring heap churn and resident set size)
-5. `benchmarking/power-efficiency-joules.md` (Performance-per-watt on edge ARM and NPU boards)
-
-Let me know when you are ready to proceed with Part 12.
