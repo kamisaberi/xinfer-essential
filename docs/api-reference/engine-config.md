@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/api-reference/engine-config.md`
-
-```markdown
 # Struct `xinfer::EngineConfig`
 
 Defined in header `<xinfer/engine_config.hpp>`  
@@ -58,5 +53,4 @@ struct EngineConfig {
 | `enable_zero_copy` | `true` | Bypasses intermediate copies using DMA-BUF and pinned allocations. |
 | `enable_offline_mode`| `false`| Disables network resolution; operates exclusively on local files. |
 | `num_worker_threads` | `1` | Pre-allocates execution contexts for parallel workers. |
-```
 

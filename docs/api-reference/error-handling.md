@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/api-reference/error-handling.md`
-
-```markdown
 # Class `xinfer::InferenceException` & Error Handling
 
 Defined in header `<xinfer/exception.hpp>`  
@@ -85,32 +80,3 @@ int main() {
     return 0;
 }
 ```
-```
-
----
-
-### Complete in Part 10
-- `xinfer-essential/docs/api-reference/index.md`
-- `xinfer-essential/docs/api-reference/inference-engine.md`
-- `xinfer-essential/docs/api-reference/tensor.md`
-- `xinfer-essential/docs/api-reference/model-hub.md`
-- `xinfer-essential/docs/api-reference/plugin-manager.md`
-- `xinfer-essential/docs/api-reference/engine-config.md`
-- `xinfer-essential/docs/api-reference/data-types.md`
-- `xinfer-essential/docs/api-reference/error-handling.md`
-
-All 8 API reference files are now generated.
-
----
-
-### Files to be Generated in Part 11
-
-The next phase covers practical, end-to-end **Tutorials** (`tutorials/`):
-
-1. `tutorials/netflow-threat-autoencoder.md` (1D tabular vector scoring in under 12 microseconds)
-2. `tutorials/realtime-yolo-edge-vision.md` (30 FPS camera inference on Rockchip RK3588 & Jetson)
-3. `tutorials/scada-modbus-anomaly-detection.md` (Inline industrial control frame inspection)
-4. `tutorials/thermal-overheating-detector.md` (Real-time industrial physical equipment monitoring)
-5. `tutorials/dual-model-shadow-execution.md` (Running production and candidate models in parallel)
-
-Let me know when you are ready to proceed with Part 11.

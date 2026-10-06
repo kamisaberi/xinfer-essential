@@ -1,12 +1,3 @@
-### Part 10: Complete C++20 API Reference (`api-reference/*`)
-
-This section contains the formal C++20 API specification for `xinfer-essential`: namespace design, execution classes, memory handles, plugin registries, configuration schemas, type systems, and exception hierarchies.
-
----
-
-### File: `xinfer-essential/docs/api-reference/index.md`
-
-```markdown
 # API Reference Overview
 
 The `xinfer-essential` C++20 API is designed for mission-critical, low-latency applications that require deterministic memory ownership and direct hardware dispatch.
@@ -41,5 +32,4 @@ Alternatively, include modular headers for granular compilation:
 2. **Explicit Error Boundaries:** Fast-path forward calls avoid dynamic error allocation by using standard return flags or throwing typed `InferenceException` hierarchies when unrecoverable hardware faults occur.
 3. **Thread Confinement:** Shared model parameters remain strictly immutable; dynamic state is isolated within thread-local execution contexts.
 4. **Zero-Overhead Abstractions:** Member accessors, alignment checks, and stride conversions are marked `constexpr` and `noexcept`.
-```
 

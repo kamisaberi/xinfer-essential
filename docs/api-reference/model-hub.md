@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/api-reference/model-hub.md`
-
-```markdown
 # Class `xinfer::ModelHub`
 
 Defined in header `<xinfer/model_hub.hpp>`  
@@ -71,5 +66,4 @@ ModelArtifact resolve(
 );
 ```
 Searches the active RAM pool and persistent disk cache for a model matching `model_identifier` and `expected_sha256`. If missing and `offline_mode == false`, pulls the model via HTTPS. Throws `InferenceException(ErrorCode::ERR_INTEGRITY_CHECK_FAILED)` if the calculated hash does not match `expected_sha256`.
-```
 

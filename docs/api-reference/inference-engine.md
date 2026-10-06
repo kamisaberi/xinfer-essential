@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/api-reference/inference-engine.md`
-
-```markdown
 # Class `xinfer::InferenceEngine`
 
 Defined in header `<xinfer/inference_engine.hpp>`  
@@ -115,5 +110,4 @@ Binds an externally created tensor (e.g., a Linux kernel DMA-BUF descriptor or h
 std::unique_ptr<ExecutionContext> create_execution_context();
 ```
 Creates an independent, thread-confined execution context sharing the engine's immutable model weights. Used for multi-threaded inference scaling.
-```
 

@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/api-reference/data-types.md`
-
-```markdown
 # Data Types, Precision & Enums
 
 Defined in header `<xinfer/data_types.hpp>`  
@@ -91,6 +86,5 @@ enum class DataType : uint8_t {
 [[nodiscard]] constexpr std::string_view to_string(MemoryType memory_type) noexcept;
 [[nodiscard]] constexpr std::string_view to_string(DataType data_type) noexcept;
 [[nodiscard]] constexpr size_t get_element_size(DataType data_type) noexcept;
-```
 ```
 

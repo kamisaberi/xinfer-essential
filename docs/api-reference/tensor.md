@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/api-reference/tensor.md`
-
-```markdown
 # Class `xinfer::Tensor`
 
 Defined in header `<xinfer/tensor.hpp>`  
@@ -99,5 +94,4 @@ Constructs a non-owning tensor wrapping an open Linux `DMA-BUF` file descriptor.
 static std::shared_ptr<Tensor> create_owning(const TensorDescriptor& desc);
 ```
 Allocates a 64-byte aligned, page-locked (`mlock`) memory buffer corresponding to the shape and precision declared in `desc`.
-```
 

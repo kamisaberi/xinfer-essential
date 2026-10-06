@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/api-reference/plugin-manager.md`
-
-```markdown
 # Class `xinfer::PluginManager`
 
 Defined in header `<xinfer/plugin_manager.hpp>`  
@@ -49,5 +44,4 @@ private:
 ## 2. Architectural Usage
 
 `PluginManager` is implemented as a thread-safe singleton. When `InferenceEngine::initialize()` executes, it queries `PluginManager::instance().load_plugin(config.backend)` to bind hardware drivers.
-```
 
