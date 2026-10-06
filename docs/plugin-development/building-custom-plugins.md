@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/plugin-development/building-custom-plugins.md`
-
-```markdown
 # Writing, Compiling & Testing a Custom Plugin
 
 This guide demonstrates how to build a custom acceleration plugin for `xinfer-essential` from scratch. In this example, we implement a reference mathematical coprocessor plugin named `libxinfer_custom_dsp.so`.
@@ -208,6 +203,5 @@ nm -D --defined-only libxinfer_custom_dsp.so
 0000000000001200 T create_xinfer_plugin
 0000000000001220 T destroy_xinfer_plugin
 0000000000001240 T get_plugin_abi_version
-```
 ```
 

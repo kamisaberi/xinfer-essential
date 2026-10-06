@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/plugin-development/iinference-plugin-interface.md`
-
-```markdown
 # The C++20 `IInferencePlugin` ABI Contract
 
 All hardware acceleration backends in `xinfer-essential` must implement the pure virtual interface `IInferencePlugin`. This contract provides a consistent lifecycle API for configuration, model compilation, execution context allocation, and synchronous/asynchronous execution.
@@ -94,5 +89,4 @@ The `ExecutionContext` object represents the execution state of an inference wor
 
 * **Thread-Confinement:** An `ExecutionContext` instance is executed by only one thread at a time. Plugins do not need internal mutexes inside `execute_synchronous()` when operating on `ExecutionContext` data.
 * **Deterministic Lifetime:** `allocate_execution_context()` is invoked once during worker thread setup; `execute_synchronous()` performs zero dynamic heap allocations.
-```
 

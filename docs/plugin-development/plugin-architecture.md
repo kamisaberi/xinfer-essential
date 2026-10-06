@@ -1,12 +1,3 @@
-### Part 7: Dynamic Extension Subsystem (`plugin-development/*`)
-
-This section details the dynamic extension architecture of `xinfer-essential`: runtime linker mechanics, the C++20 `IInferencePlugin` ABI contract, step-by-step instructions for writing custom accelerator plugins, and lifecycle state management.
-
----
-
-### File: `xinfer-essential/docs/plugin-development/plugin-architecture.md`
-
-```markdown
 # Plugin Architecture & Dynamic Linker Mechanics
 
 `xinfer-essential` decouples hardware acceleration runtimes (such as NVIDIA TensorRT, Intel OpenVINO, and Rockchip RKNN) from the foundational engine (`libxinfer.so`). Rather than statically or dynamically linking every vendor SDK into the main engine binary, backends are implemented as isolated, dynamically loaded shared libraries.
@@ -94,5 +85,4 @@ During initialization, `xinfer::PluginManager` searches the following paths in p
 2. Explicit path specified in `EngineConfig::plugin_search_path`.
 3. System default directory: `/usr/local/lib/xinfer-plugins/`.
 4. Embedded application directory: `./plugins/`.
-```
 
