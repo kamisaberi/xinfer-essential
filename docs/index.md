@@ -1,6 +1,3 @@
-### File: `xinfer-essential/docs/index.md`
-
-```markdown
 # xInfer Essential (`libxinfer.so`)
 
 **Universal Heterogeneous C++20 AI Inference Runtime**  
@@ -119,5 +116,4 @@ int main() {
 * **Direct DMA Throughput:** $12.8\,\text{GB/s}$ sustained zero-copy ingestion over Linux DMA-BUF.
 * **Heap Churn:** $0$ allocations during continuous forward passes.
 * **Linker Footprint:** $< 4.2\,\text{MB}$ release shared library binary footprint (`libxinfer.so`).
-```
 
