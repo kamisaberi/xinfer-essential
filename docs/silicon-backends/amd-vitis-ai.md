@@ -1,12 +1,3 @@
-### Part 4: Silicon Backends — Specialized Edge & NPU Accelerators (`silicon-backends/*`)
-
-This section contains implementation guides for the next five acceleration backends: **AMD Vitis AI**, **Apple CoreML**, **AMD Ryzen AI**, **MediaTek NeuroPilot**, and **Hailo HailoRT**.
-
----
-
-### File: `xinfer-essential/docs/silicon-backends/amd-vitis-ai.md`
-
-```markdown
 # AMD Vitis AI Backend (`libxinfer_vitis_ai.so`)
 
 The AMD Vitis AI backend targets adaptive SoCs and FPGAs, including the **AMD Versal AI Edge, Kria K26/KV260 SOMs, and Zynq UltraScale+ MPSoC**. It interfaces directly with the hardware Deep Learning Processing Unit (DPU) via the Xilinx Runtime (XRT) userspace library and kernel driver.
@@ -124,5 +115,4 @@ output_tensor->invalidate_cache();
 | **Kria KV260 SOM** | DPUCZDX8G (B4096) | 300 MHz | INT8 | **$9.5\,\mu\text{s}$** |
 | **Versal AI Edge VE2302** | DPUCVDX8G | 700 MHz | INT8 / BFP16 | **$3.1\,\mu\text{s}$** |
 | **Zynq ZU9EG MPSoC** | DPUCZDX8G (B4096x2)| 333 MHz | INT8 | **$7.8\,\mu\text{s}$** |
-```
 

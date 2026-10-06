@@ -1,12 +1,3 @@
-### Part 5: Silicon Backends — Embedded, Vision & FPGA Accelerators (`silicon-backends/*`)
-
-This section delivers the final six hardware guides, completing the 15-target silicon matrix for `xinfer-essential`: **Ambarella CVFlow**, **Samsung ENN**, **Google Coral Edge TPU**, **Intel FPGA AI Suite**, **Microchip VectorBlox**, and **Lattice sensAI**.
-
----
-
-### File: `xinfer-essential/docs/silicon-backends/ambarella-cvflow.md`
-
-```markdown
 # Ambarella CVFlow Backend (`libxinfer_cvflow.so`)
 
 The Ambarella CVFlow backend targets ultra-low-power vision and industrial edge processors, including the **CV2x, CV5x, and CV7x series**. It communicates with the Ambarella Vector Processor (VP) using the Linux Cavalry kernel driver (`/dev/cavalry`) and Cavalry userspace runtime.
@@ -121,5 +112,4 @@ engine.forward();
 | **CV25** | 10nm | 1.0 TOPS | **$21.4\,\mu\text{s}$** |
 | **CV22** | 10nm | 3.5 TOPS | **$12.1\,\mu\text{s}$** |
 | **CV5**  | 5nm  | 25.0 TOPS | **$8.2\,\mu\text{s}$** |
-```
 

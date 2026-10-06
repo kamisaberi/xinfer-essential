@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/silicon-backends/intel-openvino.md`
-
-```markdown
 # Intel OpenVINO Backend (`libxinfer_openvino.so`)
 
 The Intel OpenVINO backend enables native execution across Intel Core Ultra NPUs (Meteor Lake, Lunar Lake, Arrow Lake), 11th–14th Gen Intel Core processors, Xeon Scalable server CPUs, and Intel Arc discrete GPUs. It interfaces with hardware using the Intel Level Zero compute runtime.
@@ -112,5 +107,4 @@ engine.forward();
 
 * **NPU Power Profile:** Ensure the system NPU driver is not placed into aggressive power-saving states by adding the kernel argument `intel_vpu.power_profile=1` to `/etc/default/grub`.
 * **Precision Selection:** Intel NPUs achieve optimal throughput and lowest latency using `Precision::FP16` or `Precision::INT8`. If `Precision::FP32` is supplied, `libxinfer_openvino.so` automatically inserts transparent precision conversion layers.
-```
 

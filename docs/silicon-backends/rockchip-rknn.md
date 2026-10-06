@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/silicon-backends/rockchip-rknn.md`
-
-```markdown
 # Rockchip RKNN Backend (`libxinfer_rknn.so`)
 
 The Rockchip RKNN backend provides hardware acceleration for Rockchip SoCs, including the **RK3588, RK3588S, RK3576, and RV1126**. It communicates directly with the multi-core NPU via the Linux DRM (Direct Rendering Manager) driver subsystem and `librknnrt.so`.
@@ -113,5 +108,4 @@ engine.forward();
 | **Tabular NetFlow** | $1 \times 32$ | 1 Core | INT8 | **$8.9\,\mu\text{s}$** |
 | **YOLOv8s Detection** | $640 \times 640 \times 3$ | 3 Cores | INT8 | **$12.3\,\text{ms}$** |
 | **Industrial SCADA AE**| $1 \times 64$ | 1 Core | FP16 | **$14.2\,\mu\text{s}$** |
-```
 

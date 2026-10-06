@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/silicon-backends/hailo-hailort.md`
-
-```markdown
 # Hailo-8 HailoRT Backend (`libxinfer_hailo.so`)
 
 The Hailo backend provides hardware-accelerated inference for the **Hailo-8 and Hailo-8L** M.2, Mini-PCIe, and USB acceleration modules. It operates via the native HailoRT C/C++ runtime library (`libhailort.so`), utilizing compiled Hailo Executable Format (`.hef`) files.
@@ -110,28 +105,3 @@ The Hailo-8 processor provides sustained high-density compute under low-power co
 * **Active Compute Power (26 TOPS Saturation):** $\sim 2.5\,\text{W} - 3.2\,\text{W}$.
 * **Tabular Inference Latency ($N=1$):** **$7.5\,\mu\text{s}$**.
 * **YOLOv8s Line-Rate Throughput:** $\approx 185\,\text{FPS}$ sustained.
-```
-
----
-
-### Complete in Part 4
-- `xinfer-essential/docs/silicon-backends/amd-vitis-ai.md`
-- `xinfer-essential/docs/silicon-backends/apple-coreml.md`
-- `xinfer-essential/docs/silicon-backends/amd-ryzen-ai.md`
-- `xinfer-essential/docs/silicon-backends/mediatek-neuropilot.md`
-- `xinfer-essential/docs/silicon-backends/hailo-hailort.md`
-
----
-
-### Files to be Generated in Part 5
-
-The next phase covers the remaining six specialized **Silicon Backends** to complete the 15-target hardware matrix:
-
-1. `silicon-backends/ambarella-cvflow.md` (Ambarella CV2x/CV5x SoCs, Cavalry Driver)
-2. `silicon-backends/samsung-enn.md` (Exynos NPU, ENN Driver)
-3. `silicon-backends/google-coral-edgetpu.md` (Google Coral Edge TPU, `libedgetpu`)
-4. `silicon-backends/intel-fpga-ai-suite.md` (Intel Agilex/Arria/Cyclone FPGAs, `.aocx`)
-5. `silicon-backends/microchip-vectorblox.md` (PolarFire SoC FPGA, CoreVectorBlox)
-6. `silicon-backends/lattice-sensai.md` (Ultra-low-power iCE40/CrossLink FPGAs)
-
-Let me know when you are ready to proceed with Part 5

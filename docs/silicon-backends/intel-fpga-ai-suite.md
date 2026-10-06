@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/silicon-backends/intel-fpga-ai-suite.md`
-
-```markdown
 # Intel FPGA AI Suite Backend (`libxinfer_intel_fpga.so`)
 
 The Intel FPGA AI Suite backend provides deterministic, ultra-low-latency acceleration across Intel/Altera FPGAs, including **Agilex 7, Agilex 5, Arria 10, and Cyclone V SoC FPGAs**. It executes models loaded into FPGA hardware bitstreams (`.aocx`) via the OpenCL Board Support Package (BSP) and PCIe AXI master streaming interfaces.
@@ -110,5 +105,4 @@ engine.forward();
 | **Cyclone V SoC**| 110K LEs | 112 | **$45.0\,\mu\text{s}$** | $< 0.45\,\mu\text{s}$ |
 | **Arria 10 GX**  | 1150K LEs | 1518 | **$12.5\,\mu\text{s}$** | $< 0.12\,\mu\text{s}$ |
 | **Agilex 7 AGI027**| 2692K LEs | 8520 | **$6.1\,\mu\text{s}$** | **$< 0.04\,\mu\text{s}$** |
-```
 

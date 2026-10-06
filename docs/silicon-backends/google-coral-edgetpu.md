@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/silicon-backends/google-coral-edgetpu.md`
-
-```markdown
 # Google Coral Edge TPU Backend (`libxinfer_coral.so`)
 
 The Google Coral backend supports all form factors of the **Google Coral Edge TPU** (M.2, Mini PCIe, Dual Edge TPU, and USB Accelerator). It runs on top of the Gasket kernel driver (`/dev/apex_0`) and the native runtime `libedgetpu1-std`.
@@ -112,5 +107,4 @@ auto engine_core1 = xinfer::InferenceEngine::create_with_options(opts_core1);
 | **Coral USB**  | USB 3.0 Gen 1 | INT8 | **$42.0\,\mu\text{s}$** | $2.5\,\text{W}$ |
 | **Coral M.2**  | PCIe Gen 2 x1  | INT8 | **$28.0\,\mu\text{s}$** | $2.0\,\text{W}$ |
 | **Dual Edge TPU**| Dual PCIe Gen 2 | INT8 | **$18.5\,\mu\text{s}$** (Aggregate) | $4.0\,\text{W}$ |
-```
 

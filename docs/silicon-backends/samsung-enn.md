@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/silicon-backends/samsung-enn.md`
-
-```markdown
 # Samsung ENN Backend (`libxinfer_samsung_enn.so`)
 
 The Samsung ENN backend provides hardware-accelerated inference across **Samsung Exynos SoCs** equipped with the Exynos Neural Processing Unit (NPU), such as the Exynos 990, 2100, 2200, and 2400. It interfaces directly with the Exynos Neural Network (ENN) kernel driver (`/dev/enn_framework`) and `libenn_client.so`.
@@ -114,5 +109,4 @@ engine.forward();
 | **Exynos 990**  | Dual-Core NPU + DSP | 10 TOPS | **$18.2\,\mu\text{s}$** |
 | **Exynos 2200** | Dual-Core NPU (Gen 2) | 16 TOPS | **$13.5\,\mu\text{s}$** |
 | **Exynos 2400** | Quad-Core NPU (Gen 3) | 44 TOPS | **$5.1\,\mu\text{s}$** |
-```
 

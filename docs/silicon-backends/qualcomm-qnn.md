@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/silicon-backends/qualcomm-qnn.md`
-
-```markdown
 # Qualcomm QNN Backend (`libxinfer_qnn.so`)
 
 The Qualcomm QNN backend enables hardware execution across Snapdragon processors (Snapdragon X Elite, SA8295P Automotive, Snapdragon 8 Gen 2/3). It runs models directly on the Qualcomm Hexagon DSP and Hexagon Tensor Processor (HTP) via the FastRPC kernel bridge.
@@ -111,27 +106,3 @@ engine.forward();
 
 1. **Context Binaries:** For deterministic startup times ($< 50\,\text{ms}$), deploy pre-compiled `.bin` context models instead of compiling ONNX models on the edge node.
 2. **Thermal Dissipation:** Sustained execution under `BURST` mode on fanless edge appliances may trigger thermal mitigation. For steady-state workloads, use `SUSTAINED_HIGH_PERFORMANCE`.
-```
-
----
-
-### Complete in Part 3
-- `xinfer-essential/docs/silicon-backends/index.md`
-- `xinfer-essential/docs/silicon-backends/nvidia-tensorrt.md`
-- `xinfer-essential/docs/silicon-backends/intel-openvino.md`
-- `xinfer-essential/docs/silicon-backends/rockchip-rknn.md`
-- `xinfer-essential/docs/silicon-backends/qualcomm-qnn.md`
-
----
-
-### Files to be Generated in Part 4
-
-The next phase continues the **Silicon Backends** series with the next batch of edge and specialized hardware backends:
-
-1. `silicon-backends/amd-vitis-ai.md` (Versal AI Edge, Xilinx DPU, XRT)
-2. `silicon-backends/apple-coreml.md` (Apple Silicon Neural Engine, Metal Unified Memory)
-3. `silicon-backends/amd-ryzen-ai.md` (XDNA Architecture, NPU DirectML execution)
-4. `silicon-backends/mediatek-neuropilot.md` (Dimensity APU, ION Memory)
-5. `silicon-backends/hailo-hailort.md` (Hailo-8 M.2 coprocessor, `.hef` format)
-
-Let me know when you are ready to proceed with Part 4.

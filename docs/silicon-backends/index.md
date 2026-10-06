@@ -1,12 +1,3 @@
-### Part 3: Silicon Backends — Primary Edge Accelerators (`silicon-backends/*`)
-
-This section contains the master silicon compatibility matrix and implementation guides for the first four production acceleration backends: **NVIDIA TensorRT**, **Intel OpenVINO**, **Rockchip RKNN**, and **Qualcomm QNN**.
-
----
-
-### File: `xinfer-essential/docs/silicon-backends/index.md`
-
-```markdown
 # Silicon Compatibility Matrix & Hardware Overview
 
 `xinfer-essential` abstracts heterogeneous hardware backends behind the unified `IInferencePlugin` interface. This allows edge security and industrial daemons to run across micro-edge NPUs, embedded SoCs, discrete GPUs, and FPGA coprocessors without code modifications.
@@ -72,5 +63,4 @@ When `config.backend = xinfer::BackendType::AUTO` is set, `xinfer-essential` dis
 ```
 
 If an edge NPU experiences a hardware bus reset or thermal throttling event during initialization, the engine drops to the next available tier without interrupting host daemon execution.
-```
 

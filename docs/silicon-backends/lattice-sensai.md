@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/silicon-backends/lattice-sensai.md`
-
-```markdown
 # Lattice sensAI Backend (`libxinfer_sensai.so`)
 
 The Lattice sensAI backend accelerates neural inference on ultra-low-power **Lattice iCE40 UltraPlus, CrossLink-NX, and Avant FPGAs**. It streams tensors directly over high-speed SPI or Wishbone bus interfaces into the FPGA's on-chip Single-Port RAM (SPRAM) and Embedded Block RAM (EBR).
@@ -106,30 +101,3 @@ engine.forward();
 | **iCE40 UltraPlus 5K** | 1024 Kb SPRAM | **$< 15\,\text{mW}$** | **$115.0\,\mu\text{s}$** |
 | **CrossLink-NX-40**    | 2.5 Mb EBR    | **$< 75\,\text{mW}$** | **$38.2\,\mu\text{s}$** |
 | **Avant-E 500**        | 25 Mb EBR     | **$< 350\,\text{mW}$** | **$12.1\,\mu\text{s}$** |
-```
-
----
-
-### Complete in Part 5
-- `xinfer-essential/docs/silicon-backends/ambarella-cvflow.md`
-- `xinfer-essential/docs/silicon-backends/samsung-enn.md`
-- `xinfer-essential/docs/silicon-backends/google-coral-edgetpu.md`
-- `xinfer-essential/docs/silicon-backends/intel-fpga-ai-suite.md`
-- `xinfer-essential/docs/silicon-backends/microchip-vectorblox.md`
-- `xinfer-essential/docs/silicon-backends/lattice-sensai.md`
-
-All 15 hardware execution targets in `xinfer-essential` are now documented.
-
----
-
-### Files to be Generated in Part 6
-
-The next phase covers **Memory Management** (`memory-management/`):
-
-1. `memory-management/dma-buf-integration.md` (Linux kernel DMA-BUF descriptors, `/dev/dma_heap`)
-2. `memory-management/host-pinned-memory.md` (Allocating non-pageable RAM, `mlock`, `cudaHostRegister`)
-3. `memory-management/unified-memory.md` (Unified virtual address spaces across SoCs)
-4. `memory-management/tensor-backing-buffers.md` (Persistent memory ownership and memory pools)
-5. `memory-management/alignment-and-cache.md` (64-byte cache alignment and TLB miss optimization)
-
-Let me know when you are ready to proceed with Part 6.

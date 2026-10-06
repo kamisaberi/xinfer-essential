@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/silicon-backends/amd-ryzen-ai.md`
-
-```markdown
 # AMD Ryzen AI Backend (`libxinfer_ryzen_ai.so`)
 
 The AMD Ryzen AI backend provides hardware acceleration for AMD mobile and desktop processors equipped with the **AMD XDNA Neural Processing Unit (NPU)**, including Ryzen 7040 (Phoenix), 8040 (Hawk Point), and Strix Point processors.
@@ -97,5 +92,4 @@ engine.forward();
 | **Ryzen 7 7840U** | AMD XDNA Gen 1 | 10 TOPS | **$13.8\,\mu\text{s}$** |
 | **Ryzen 7 8840HS** | AMD XDNA Gen 1 | 16 TOPS | **$12.0\,\mu\text{s}$** |
 | **Ryzen AI 9 HX 370** | AMD XDNA Gen 2 | 50 TOPS | **$4.9\,\mu\text{s}$** |
-```
 

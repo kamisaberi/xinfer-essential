@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/silicon-backends/mediatek-neuropilot.md`
-
-```markdown
 # MediaTek NeuroPilot Backend (`libxinfer_neuropilot.so`)
 
 The MediaTek NeuroPilot backend enables hardware acceleration on MediaTek systems-on-chip equipped with the **MediaTek AI Processing Unit (APU)**, such as the Dimensity 9300/9400 and Genio 1200/700/500 edge IoT platforms.
@@ -110,5 +105,4 @@ engine.forward();
 | **Genio 700 (MT8390)** | APU 3.0 | 4.0 TOPS | **$14.5\,\mu\text{s}$** |
 | **Genio 1200 (MT8395)**| APU 4.0 | 4.8 TOPS | **$10.2\,\mu\text{s}$** |
 | **Dimensity 9300** | APU 790 | 45.0 TOPS | **$3.8\,\mu\text{s}$** |
-```
 

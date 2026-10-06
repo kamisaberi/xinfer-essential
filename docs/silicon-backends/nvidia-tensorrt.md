@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/silicon-backends/nvidia-tensorrt.md`
-
-```markdown
 # NVIDIA TensorRT Backend (`libxinfer_tensorrt.so`)
 
 The NVIDIA TensorRT backend provides hardware-accelerated inference across NVIDIA Jetson systems (Orin Nano, Orin NX, AGX Orin) and discrete enterprise GPUs (RTX A4000, L40S, H100). It executes models directly within CUDA asynchronous streams, bypassing host CPU synchronization bottlenecks.
@@ -117,5 +112,4 @@ engine.synchronize();
 
 1. **Enable CUDA Graphs:** For fixed-size input tensors (e.g., 32-dim tabular flows), setting `enable_cuda_graphs = true` reduces CPU enqueue overhead from $\sim 8.2\,\mu\text{s}$ down to $< 1.1\,\mu\text{s}$.
 2. **Jetson Unified Memory:** On Jetson AGX Orin, avoid discrete VRAM allocations. Use `cudaMallocManaged()` with `cudaMemAdviseSetPreferredLocation` targeting `cudaCpuDeviceId` to allow the GPU Tensor Cores and CPU to share the same physical LPDDR5 bus.
-```
 

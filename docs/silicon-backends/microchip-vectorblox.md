@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/silicon-backends/microchip-vectorblox.md`
-
-```markdown
 # Microchip VectorBlox Backend (`libxinfer_vectorblox.so`)
 
 The Microchip VectorBlox backend accelerates neural networks on **Microchip PolarFire SoC FPGAs** using the CoreVectorBlox IP processor core. It operates via the Linux UIO (Userspace I/O) driver subsystem and direct AXI memory-mapped registers.
@@ -110,5 +105,4 @@ engine.forward();
 | :--- | :--- | :--- | :--- | :--- |
 | **PolarFire MPFS250T** | PolarFire SoC | 150 MHz | **$1.8\,\text{W}$** | **$34.0\,\mu\text{s}$** |
 | **PolarFire MPFS095T** | PolarFire SoC | 125 MHz | **$1.2\,\text{W}$** | **$48.5\,\mu\text{s}$** |
-```
 

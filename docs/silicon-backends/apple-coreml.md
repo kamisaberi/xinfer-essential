@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/silicon-backends/apple-coreml.md`
-
-```markdown
 # Apple CoreML Backend (`libxinfer_coreml.so` / `libxinfer_coreml.dylib`)
 
 The Apple CoreML backend provides hardware acceleration across Apple Silicon platforms (**M1 through M4, Pro, Max, Ultra**, and A-series embedded processors). It executes models directly on the dedicated Apple Neural Engine (ANE) using compiled model packages (`.mlmodelc`) and Metal Unified Virtual Memory.
@@ -109,5 +104,4 @@ engine.forward();
 | **Apple M2** | 8-core CPU / 16-core ANE | Neural Engine (ANE) | **$6.2\,\mu\text{s}$** |
 | **Apple M3 Pro** | 12-core CPU / 16-core ANE | Neural Engine (ANE) | **$5.1\,\mu\text{s}$** |
 | **Apple M4 Max** | 16-core CPU / 16-core ANE | Neural Engine (ANE) | **$4.0\,\mu\text{s}$** |
-```
 
