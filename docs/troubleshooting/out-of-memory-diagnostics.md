@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/troubleshooting/out-of-memory-diagnostics.md`
-
-```markdown
 # Out-of-Memory (OOM) & DMA Allocation Diagnostics
 
 This guide addresses memory locking, DMA allocation, and buffer pool failures in constrained edge environments.
@@ -78,5 +73,4 @@ Verify whether the IOMMU is running in pass-through mode:
 GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on iommu=pt"
 ```
 Setting `iommu=pt` enables hardware translation pass-through for high-throughput PCIe network and accelerator devices while preventing false page protection faults.
-```
 

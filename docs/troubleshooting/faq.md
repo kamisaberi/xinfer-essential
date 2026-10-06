@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/troubleshooting/faq.md`
-
-```markdown
 # Technical Frequently Asked Questions (FAQ)
 
 ---
@@ -34,5 +29,4 @@ To achieve sub-microsecond latency on CPUs (such as Intel Xeon or Core Ultra):
 3. Isolate the execution CPU core using the Linux kernel boot parameter `isolcpus=<core_id>`.
 4. Lock CPU core frequency to maximum using `cpupower frequency-set -g performance`.
 5. Pre-warm CPU caches with at least $1{,}000$ discard passes.
-```
 

@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/troubleshooting/linker-symbol-conflicts.md`
-
-```markdown
 # Linker & Dynamic Symbol Conflict Diagnostics
 
 Dynamic plugins and consumer binaries can encounter symbol visibility conflicts, One Definition Rule (ODR) violations, or library path lookup failures.
@@ -88,6 +83,5 @@ If thousands of third-party symbols appear with global `T` visibility, the plugi
 ```cmake
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(CMAKE_VISIBILITY_INLINES_HIDDEN ON)
-```
 ```
 

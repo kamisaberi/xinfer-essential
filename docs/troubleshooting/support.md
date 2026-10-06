@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/troubleshooting/support.md`
-
-```markdown
 # Enterprise Support & Issue Reporting
 
 ---

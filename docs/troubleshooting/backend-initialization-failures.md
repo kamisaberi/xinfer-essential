@@ -1,8 +1,3 @@
----
-
-### File: `xinfer-essential/docs/troubleshooting/backend-initialization-failures.md`
-
-```markdown
 # Hardware Backend Initialization Failures
 
 This guide covers troubleshooting driver failures across specific hardware targets.
@@ -92,5 +87,4 @@ rknn_init failed! ret = -6, cannot open /dev/rknpu
    GRUB_CMDLINE_LINUX_DEFAULT="pcie_aspm=off"
    ```
    Run `sudo update-grub` and reboot.
-```
 

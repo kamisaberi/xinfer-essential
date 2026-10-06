@@ -1,12 +1,3 @@
-### Part 13: Troubleshooting & Help Desk System (`troubleshooting/*`)
-
-This final section covers diagnostics, fault isolation, common build errors, dynamic linker collisions, hardware driver initialization failures, kernel DMA/OOM debugging, technical FAQs, and enterprise support escalation paths for `xinfer-essential`.
-
----
-
-### File: `xinfer-essential/docs/troubleshooting/common-build-errors.md`
-
-```markdown
 # Common Build & Compilation Errors
 
 This guide provides remediation steps for compiler, CMake, and toolchain issues encountered when building `xinfer-essential` from source.
@@ -92,6 +83,5 @@ sudo apt-get install -y \
     libfmt-dev \
     libspdlog-dev \
     ninja-build
-```
 ```
 
