@@ -20,7 +20,7 @@ Traditional ML inference frameworks frequently bundle heavy runtimes or assume a
 
 The core library does not link against silicon vendor SDKs at compile time. Instead, it relies on dynamically loaded runtime plugins adhering to the `IInferencePlugin` ABI contract.
 
-```
+```text
                     +-----------------------+
                     | xinfer::PluginManager |
                     +-----------------------+
@@ -58,5 +58,3 @@ Edge models operating on untrusted nodes risk tampering, adversarial poisoning, 
 * **In-Memory Decryption:** Native AES-256-GCM unbundling directly into RAM; decrypted weights are never written to physical swap or temporary filesystems.
 * **Strict SHA-256 Hashing:** Automated verification against signed manifests before execution handles are bound.
 * **TPM 2.0 PCR Sealing:** Key derivation secured against Platform Configuration Registers to guarantee weight decryption only occurs on validated hardware.
-```
-
