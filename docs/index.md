@@ -9,7 +9,7 @@
 
 `xinfer-essential` is a low-latency, zero-copy C++20 inference engine designed for edge appliances, industrial cyber-physical hardware, and real-time defense networks. It abstracts complex, vendor-specific neural acceleration APIs behind a unified, cache-aligned tensor interface.
 
-```
+```text
 +-----------------------------------------------------------------------------+
 |                          Application / Host Process                         |
 |                 (e.g., Blackbox-Sentinel, EDR, SCADA Monitor)               |
@@ -116,4 +116,3 @@ int main() {
 * **Direct DMA Throughput:** $12.8\,\text{GB/s}$ sustained zero-copy ingestion over Linux DMA-BUF.
 * **Heap Churn:** $0$ allocations during continuous forward passes.
 * **Linker Footprint:** $< 4.2\,\text{MB}$ release shared library binary footprint (`libxinfer.so`).
-
