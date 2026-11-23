@@ -130,4 +130,14 @@ Tensor& Engine::get_output_tensor(const std::string& name) {
     return backend_->get_output_tensor(name);
 }
 
+std::vector<std::string> Engine::input_names() const {
+    if (!backend_) return {};
+    return backend_->input_names();
+}
+
+std::vector<std::string> Engine::output_names() const {
+    if (!backend_) return {};
+    return backend_->output_names();
+}
+
 } // namespace xinfer
